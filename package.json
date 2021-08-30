@@ -1,5 +1,5 @@
 {
-  "name": "groupomania_frontend",
+  "name": "groupomania",
   "version": "0.1.0",
   "description": "FrontEnd du projet Groupomania, un réseau social d'entreprise",
   "private": true,
@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/Celine86/CelineObringer_7_18082021_FrontEnd#readme",
   "dependencies": {
+    "@popperjs/core": "^2.9.3",
+    "bootstrap": "^5.1.0",
     "core-js": "^3.16.4",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
