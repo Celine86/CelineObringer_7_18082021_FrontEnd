@@ -53,10 +53,13 @@ p{
   height: 10vh;
 }
 .main {
-  height: 80vh;
+  height: 85vh;
 }
 .footer {
-  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5vh;
 }
 
 </style>
