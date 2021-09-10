@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import userServices from '../services/userServices';
+import axios from 'axios';
 import router from '../router';
 
     export default {
@@ -25,10 +25,15 @@ import router from '../router';
         },
         methods: {
             submit() {
-                userServices.signinUser({ username: this.myUsername, password: this.myPassword})
+                axios.post('http://localhost:3000/api/users/login', { username: this.myUsername, password: this.myPassword})
                 .then(function (response) {
-                    localStorage.setItem("token", response.data.token);
-                    router.push("/connected");
+                    localStorage.setItem("token",response.data.token)
+                    localStorage.setItem("userId",response.data.userId)
+                    localStorage.setItem("username",response.data.username)
+                    localStorage.setItem("email",response.data.email)
+                    localStorage.setItem("avatar",response.data.avatar)
+                    localStorage.setItem("role",response.data.role)                    
+                    router.push("/useraccount");
                 })
                 .catch(function(error){
                     console.log(error);

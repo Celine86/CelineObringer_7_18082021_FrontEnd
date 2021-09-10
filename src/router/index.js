@@ -18,9 +18,9 @@ const routes = [
     component: () => import("../components/Signin"),
   },
   {
-    path: '/connected',
-    name: 'Connected',
-    component: () => import("../components/Connected"),
+    path: '/useraccount',
+    name: 'UserAccount',
+    component: () => import("../components/UserAccount"),
   },
   {
     path: '/test',
@@ -37,8 +37,8 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const visitorPages = ["/", "/signin", "/signup", "test"]
   const loggedUserPages = !visitorPages.includes(to.path)
-  const loggedUserToken = localStorage.getItem("token")
-  if (loggedUserPages && !loggedUserToken) {
+  const loggedUser = localStorage.getItem("token")
+  if (loggedUserPages && !loggedUser) {
     return next("/")
   }
   next()
