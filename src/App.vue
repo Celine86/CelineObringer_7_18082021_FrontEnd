@@ -31,10 +31,11 @@ export default {
   box-sizing: border-box;
 }
 body {
-  background-image: linear-gradient(180deg, rgba(220, 20, 60) 50%, rgba(255, 255, 255) 100%);
+  background-image: linear-gradient(180deg, rgba(220, 20, 60) 50%, rgba(0, 0, 128) 100%);
   min-height: 100vh;
   background-size: cover;
   display: flex;
+  /*flex-direction: column; */
   justify-content: center;
 }
 #app {
@@ -50,15 +51,43 @@ p{
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 10vh;
+  height: 10vh; 
 }
 .main {
-  height: 85vh;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 80%;
+  /* height: 90vh; */
 }
 .footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 5vh;
+  margin-top: auto;
+}
+.responsive__postimage {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+.responsive__avatarimage {
+  width: 100%;
+  max-width: 75px;
+  height: auto;
+}
+.post {
+  border: 1px solid red;
+  padding: 1rem;
+  margin: 1rem;
+}
+.post a {
+  text-decoration: none;
+}
+.post:hover {
+  text-decoration: none;
+  border: 1px solid blue;
 }
 </style>
