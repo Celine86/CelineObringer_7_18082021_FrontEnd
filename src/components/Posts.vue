@@ -28,7 +28,7 @@ export default {
             posts: [],
         }
     },
-    created: function() {
+    created() {
         axios.get("http://localhost:3000/api/posts/", { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
         .then(response => {
             const resp = response.data

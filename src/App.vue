@@ -31,7 +31,8 @@ export default {
   box-sizing: border-box;
 }
 body {
-  background-image: linear-gradient(180deg, rgba(220, 20, 60) 50%, rgba(0, 0, 128) 100%);
+  /* background-image: linear-gradient(180deg, rgba(220, 20, 60) 50%, rgba(0, 0, 128) 100%); */
+  background-color: rgba(220, 20, 60);
   min-height: 100vh;
   background-size: cover;
   display: flex;
@@ -59,7 +60,7 @@ p{
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  max-width: 80%;
+  max-width: 100%;
   /* height: 90vh; */
 }
 .footer {
