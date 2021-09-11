@@ -12,6 +12,7 @@
         </form>
 
         <button @click="logout()">Se déconnecter</button>
+        <button @click="deleteAccount()">Supprimer mon compte</button>
     </div>
 </template>
 
@@ -46,8 +47,14 @@ import axios from 'axios';
             updateAvatar() {
                 const formData = new FormData();
                 formData.append("image", this.file);
-                axios.put("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), formData, { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
-            }
+                axios.put("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), formData, { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} });
+                router.go();
+            },
+            deleteAccount() {
+                axios.delete("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
+                localStorage.clear()
+                router.push("/");
+            },
         },
         created: function() {
             axios.get("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"),{ headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
