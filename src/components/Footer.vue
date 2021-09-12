@@ -1,7 +1,7 @@
 <template>
-    <div class ="footer">
+    <footer>
         <h1>Footer</h1>
-    </div>
+    </footer>
 </template>
 
 <script>
@@ -11,4 +11,10 @@
 </script>
 
 <style scoped>
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+}
 </style>

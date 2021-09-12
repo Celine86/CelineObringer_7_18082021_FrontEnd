@@ -21,7 +21,6 @@ export default {
 
 </script>
 
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 * {
@@ -31,64 +30,60 @@ export default {
   box-sizing: border-box;
 }
 body {
-  /* background-image: linear-gradient(180deg, rgba(220, 20, 60) 50%, rgba(0, 0, 128) 100%); */
-  background-color: rgba(220, 20, 60);
+  background-image: url("./assets/groupomaniabackground.jpg");
   min-height: 100vh;
   background-size: cover;
   display: flex;
-  /*flex-direction: column; */
   justify-content: center;
 }
 #app {
   max-width: 100%;
 }
 h1,h2,h3,h4,h5,h6{
-  color: #f2f2f2;
+  color: #000080;
 }
 p{
-  color: #f2f2f2;
+  color: #000080;
 }
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 10vh; 
-}
-.main {
+main {
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   max-width: 100%;
-  /* height: 90vh; */
 }
-.footer {
+.card {
+  border: 5px solid #dc143c;
+  border-radius: 2rem;
+  background: #f2f2f2;
+  padding: 2rem;
+  margin: 2rem;
+  max-width: 50rem;
+}
+.card__author {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-  margin-top: auto;
+  padding-bottom: 1rem;
 }
-.responsive__postimage {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-}
-.responsive__avatarimage {
-  width: 100%;
-  max-width: 75px;
-  height: auto;
-}
-.post {
-  border: 1px solid red;
-  padding: 1rem;
-  margin: 1rem;
-}
-.post a {
+.card a {
   text-decoration: none;
 }
-.post:hover {
+.card:hover {
   text-decoration: none;
-  border: 1px solid blue;
+  border: 5px solid #000080;
+}
+.card__postimage {
+  width: 100%;
+  height: auto;
+}
+.card__avatarimage {
+  width: 100%;
+  max-width: 35px;
+  height: auto;
+  margin: 0 1rem;
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
-    <div class ="header">
-        <img alt="Groupomania logo" src="@/assets/logo.png" />
-    </div>
+    <header>
+        <img alt="Groupomania logo" src="@/assets/logoblack.png" />
+        <div class="nav">
+        </div>
+    </header>
 </template>
 
 <script>
@@ -10,5 +12,15 @@
     }
 </script>
 
-<style>
+<style scoped>
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 10vh; 
+}
+.nav {
+
+}
 </style>

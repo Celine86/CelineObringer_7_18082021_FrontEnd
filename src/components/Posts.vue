@@ -1,20 +1,23 @@
 <template>
-    <div class ="main">
+    <main>
         <h1>Posts</h1>
-        <div v-for="post in posts" :key="post.id" class="post">
+        <div v-for="post in posts" :key="post.id" class="card">
             <a :href="'#/singlepost/' + post.id">
                 <div>
-                    <h3>title : {{ post.title }}</h3><br>
-                    <h3>content : {{ post.content }}</h3><br>
-                    <img :src="post.imageUrl" class="responsive__postimage"><br>
-                    <p>username : {{ post.User.username }}</p><br>
-                    <p>email : {{ post.User.email }}</p><br>
-                    <img :src="post.User.avatar" class="responsive__avatarimage"><br>
+                    <div class="card__author">
+                        <img :src="post.User.avatar" class="card__avatarimage">
+                        <p>{{ post.User.username }}</p>
+                    </div>
+                    <div>
+                        <h2>{{ post.title }}</h2>
+                        <img :src="post.imageUrl" class="card__postimage">
+                        <p>{{ post.content }}</p>
+                    </div>
                 </div>
             </a>
         </div>
 
-    </div>
+    </main>
 </template>
 
 
@@ -39,7 +42,6 @@ export default {
         })
     }
 }
-
 </script>
 
 
