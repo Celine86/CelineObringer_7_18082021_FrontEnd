@@ -1,7 +1,7 @@
 <template>
     <main>
         <h1>SignUp</h1>
-        <form @submit.prevent="submit" class="card">
+        <form @submit.prevent class="card">
             <div class="card__child">
                 <label for="myUsername" class="card__input">Pseudonyme </label>
                 <input type="text" v-model="myUsername">
@@ -15,7 +15,11 @@
                 <input type="text" v-model="myPassword">
             </div>
             <div class="card__child">
-                <button class="card__btn">S'inscrire</button>
+                <button @click="submit()" 
+                class="card__btn" 
+                :class="{'card__btn--disabled' : !checkFields}"
+                :disabled="!checkFields">
+                S'inscrire</button>
             </div>
         </form>
     </main>
@@ -32,7 +36,16 @@ export default {
             myEmail: "",
             myPassword: "",
         }
-    }, 
+    },
+    computed: { 
+        checkFields: function() {
+            if (this.myEmail != "" && this.myUsername != "" && this.myPassword != "") {
+            return true;
+            } else {
+            return false;
+            }
+        },
+    },
     methods: {
         submit() {
             const myUsername = this.myUsername
@@ -40,8 +53,9 @@ export default {
             const myPassword = this.myPassword
             axios.post('http://localhost:3000/api/users/signup', { email: myEmail, username: myUsername, password: myPassword })
             .then(function (response) {
-                console.log(response);
+                //console.log(response);
                 if (response.statusText==="Created") {
+                    alert("Votre compte a été créé vous allez être redirigé vers votre profil")
                     axios.post('http://localhost:3000/api/users/login', { username: myUsername, password: myPassword })
                     .then(function (response) {
                         localStorage.setItem("token",response.data.token)
@@ -53,12 +67,12 @@ export default {
                         router.push("/useraccount");
                     })
                     .catch(function(error){
-                        console.log(error);
+                        alert(error.response.data.error);
                     })
                 }
             })
             .catch(function (error) {
-                console.log(error);
+                alert(error.response.data.error);
             })
         }
     }
@@ -66,35 +80,5 @@ export default {
 </script>
 
 <style scoped>
-.card {
-    display: flex;
-    flex-direction: column;
-    border: 0.2rem solid #dc143c;
-    border-radius: 2rem;
-    background: #f2f2f2;
-    padding: 2rem;
-    margin: 2rem;
-    max-width: 50rem;
-}
-.card__child {
-    display: flex;
-    flex-direction: column;
-    margin: 0.5rem 0rem;
-    padding: 0.5rem 0rem;
-}
-.card__btn {
-    border: none;
-    border-radius: 2rem;
-    padding: 0.4rem 0.4rem;
-    margin: 0.2rem 0.4rem;
-    cursor: pointer;
-    background-color: #000080;
-    color: #f2f2f2;
-    font-weight: bold;
-    font-size: 1rem;
-}
-.card__input {
-    color: #000080;
-    font-weight: bold;
-}
+
 </style>

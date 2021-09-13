@@ -54,12 +54,44 @@ main {
   max-width: 100%;
 }
 .card {
-  border: 5px solid #dc143c;
-  border-radius: 2rem;
+  border: 0.2rem solid #dc143c;
   background: #f2f2f2;
   padding: 2rem;
   margin: 2rem;
   max-width: 50rem;
+}
+.card:hover {
+  text-decoration: none;
+  border: 0.2rem solid #000080;
+}
+.card__child {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0rem;
+    padding: 0.5rem 0rem;
+}
+.card__btn {
+    border: none;
+    padding: 0.4rem 0.4rem;
+    margin: 0.2rem 0.4rem;
+    cursor: pointer;
+    background-color: #000080;
+    color: #f2f2f2;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.card__btn--disabled {
+    background: #dc143c;
+    color: #f2f2f2;
+}
+.card__btn--disabled:hover {
+    cursor: not-allowed;
+    background: #f2f2f2;
+    color: #dc143c;
+}
+.card__input {
+    color: #000080;
+    font-weight: bold;
 }
 .card__author {
   display: flex;
@@ -71,10 +103,6 @@ main {
 }
 .card a {
   text-decoration: none;
-}
-.card:hover {
-  text-decoration: none;
-  border: 5px solid #000080;
 }
 .card__postimage {
   width: 100%;

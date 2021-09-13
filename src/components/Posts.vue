@@ -38,7 +38,7 @@ export default {
             this.posts = resp
         })
         .catch((error) => {
-            console.log(error)
+            alert(error.response.data.error);
         })
     }
 }

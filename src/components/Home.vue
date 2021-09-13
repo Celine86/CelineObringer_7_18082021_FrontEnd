@@ -27,7 +27,7 @@
 <style scoped>
 .card {
     border: 0.2rem solid #dc143c;
-    border-radius: 2rem;
+    /* border-radius: 2rem; */
     background: #f2f2f2;
     padding: 2rem;
     margin: 2rem;

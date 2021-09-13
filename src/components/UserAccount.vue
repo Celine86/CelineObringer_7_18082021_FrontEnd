@@ -21,8 +21,6 @@
 <script>
 import router from '../router';
 import axios from 'axios';
-
-
     export default {
         name: "Connected",
         data() {
@@ -57,11 +55,11 @@ import axios from 'axios';
                     location.reload();
                 })
                 .catch(function(error) {
-                    alert(error.data.message);
-                    //console.log(error);
+                    alert(error.response.data.error);
                 })
             },
             deleteAccount() {
+                alert("Cette action supprimera définitevement votre compte et toutes les données associées (meesages, commentaires, etc) \nEtes-vous sûr(e) de vouloir continuer ?")
                 axios.delete("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
                 .then((response) => {
                     alert(response.data.message);
@@ -69,8 +67,7 @@ import axios from 'axios';
                     router.push("/");
                 })
                 .catch(function(error) {
-                    alert(error.data.message);
-                    //console.log(error);
+                    alert(error.response.data.error);
                 })
             },
         },
@@ -82,8 +79,7 @@ import axios from 'axios';
                 this.avatar = user.data.userInfos.avatar;
             })
             .catch(function(error) {
-                alert(error.data.message);
-                //console.log(error);
+               alert(error.response.data.error);
             })
         },
     }
@@ -91,7 +87,7 @@ import axios from 'axios';
 
 <style scoped>
 .card {
-    border-radius: 2rem;
+    /* border-radius: 2rem; */
     background: #f2f2f2;
     padding: 2rem;
     margin: 2rem;
@@ -104,13 +100,13 @@ import axios from 'axios';
     align-content: space-around;
 }
 .card__avatar {
-  width: 100%;
-  max-width: 25rem;
-  height: auto;
+    width: 100%;
+    max-width: 25rem;
+    height: auto;
 }
 .card__btn {
     border: 0.15rem solid #dc143c;
-    border-radius: 2rem;
+    /* border-radius: 2rem; */
     padding: 0.2rem 0.4rem;
     margin: 0.2rem 0.4rem;
     cursor: pointer;
@@ -121,7 +117,7 @@ import axios from 'axios';
 }
 .card__avatar--file {
     border: 0.15rem solid #dc143c;
-    border-radius: 2rem;
+    /* border-radius: 2rem; */
     padding: 0.2rem 0.4rem;
     cursor: pointer;
     background-color: #f2f2f2;

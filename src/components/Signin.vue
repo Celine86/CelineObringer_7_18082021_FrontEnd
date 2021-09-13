@@ -1,7 +1,7 @@
 <template>
     <main>
         <h1>SignIn</h1>
-        <form @submit.prevent="submit" class="card">
+        <form @submit.prevent class="card">
             <div class="card__child">
                 <label for="myUsername" class="card__input">Pseudonyme </label>
                 <input type="text" v-model="myUsername">
@@ -11,7 +11,11 @@
                 <input type="text" v-model="myPassword">
             </div>
             <div class="card__child">
-                <button class="card__btn">Se connecter</button>
+                <button @click="submit()" 
+                class="card__btn" 
+                :class="{'card__btn--disabled' : !checkFields}"
+                :disabled="!checkFields">
+                Se connecter</button>
             </div>
         </form>
     </main>
@@ -28,6 +32,15 @@ export default {
             myPassword: "",
         }
     },
+    computed: { 
+        checkFields: function() {
+            if (this.myUsername != "" && this.myPassword != "") {
+            return true;
+            } else {
+            return false;
+            }
+        },
+    },
     methods: {
         submit() {
             axios.post('http://localhost:3000/api/users/login', { username: this.myUsername, password: this.myPassword})
@@ -37,11 +50,13 @@ export default {
                 localStorage.setItem("username",response.data.username)
                 localStorage.setItem("email",response.data.email)
                 localStorage.setItem("avatar",response.data.avatar)
-                localStorage.setItem("role",response.data.role)                    
+                localStorage.setItem("role",response.data.role) 
+                //alert(response.data.message);                   
                 router.push("/useraccount");
             })
             .catch(function(error){
-                console.log(error);
+                console.log(error.response.data.error);
+                alert(error.response.data.error);
             })
         }
     }
@@ -49,33 +64,5 @@ export default {
 </script>
 
 <style scoped>
-.card {
-    border: 0.2rem solid #dc143c;
-    border-radius: 2rem;
-    background: #f2f2f2;
-    padding: 2rem;
-    margin: 2rem;
-    max-width: 50rem;
-}
-.card__child {
-    display: flex;
-    flex-direction: column;
-    margin: 0.5rem 0rem;
-    padding: 0.5rem 0rem;
-}
-.card__btn {
-    border: none;
-    border-radius: 2rem;
-    padding: 0.4rem 0.4rem;
-    margin: 0.2rem 0.4rem;
-    cursor: pointer;
-    background-color: #000080;
-    color: #f2f2f2;
-    font-weight: bold;
-    font-size: 1rem;
-}
-.card__input {
-    color: #000080;
-    font-weight: bold;
-}
+
 </style>

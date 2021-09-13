@@ -37,7 +37,7 @@ export default {
             this.user = respuser
         })
         .catch((error) => {
-            console.log(error)
+            alert(error.response.data.error);
         })
     }
 }
