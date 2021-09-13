@@ -4,32 +4,42 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import("../components/Home"),
+    component: () => import("../views/Home"),
   },
   {
     path: '/signup',
     name: 'Signup',
-    component: () => import("../components/Signup"),
+    component: () => import("../views/Signup"),
   },
   {
     path: '/signin',
     name: 'Signin',
-    component: () => import("../components/Signin"),
+    component: () => import("../views/Signin"),
   },
   {
     path: '/useraccount',
     name: 'UserAccount',
-    component: () => import("../components/UserAccount"),
+    component: () => import("../views/UserAccount"),
   },
   {
     path: '/posts',
     name: 'Posts',
-    component: () => import("../components/Posts"),
+    component: () => import("../views/Posts"),
   },
   {
     path: '/singlepost/:id',
     name: 'SinglePost',
-    component: () => import("../components/SinglePost"),
+    component: () => import("../views/SinglePost"),
+  },
+  {
+    path: '/rgpd',
+    name: 'Rgpd',
+    component: () => import("../views/Rgpd"),
+  },
+  {
+    path: '/charte',
+    name: 'Charte',
+    component: () => import("../views/Charte"),
   },
 ]
 
@@ -39,7 +49,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const visitorPages = ["/", "/signin", "/signup"]
+  const visitorPages = ["/", "/signin", "/signup", "/rgpd", "/charte"]
   const loggedUserPages = !visitorPages.includes(to.path)
   const loggedUser = localStorage.getItem("token")
   if (loggedUserPages && !loggedUser) {

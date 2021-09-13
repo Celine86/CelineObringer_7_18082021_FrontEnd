@@ -1,9 +1,8 @@
 <template>
     <main>
-        <h1>Posts</h1>
-        <div v-for="post in posts" :key="post.id" class="card">
-            <a :href="'#/singlepost/' + post.id">
-                <div>
+        <div v-for="post in posts" :key="post.id" class="wrap">
+            <a :href="'#/singlepost/' + post.id" >
+                <div class="card">
                     <div class="card__author">
                         <img :src="post.User.avatar" class="card__avatarimage">
                         <p>{{ post.User.username }}</p>
@@ -13,8 +12,15 @@
                         <img :src="post.imageUrl" class="card__postimage">
                         <p>{{ post.content }}</p>
                     </div>
+                    <div class="card__child--nav">
+                    <p><a :href="'#/singlepost/' + post.id">Laisser un commentaire</a> || 
+                        <a :href="'#/singlepost/' + post.id">Voir les commentaires</a></p>
+                    </div>
                 </div>
             </a>
+            <div class="main__nav">
+                <button class="main__nav--button">Ajouter un Post</button>
+            </div>
         </div>
 
     </main>
@@ -44,4 +50,12 @@ export default {
 }
 </script>
 
-
+<style scoped>
+.wrap {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+</style>

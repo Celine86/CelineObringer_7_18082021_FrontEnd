@@ -53,11 +53,37 @@ main {
   flex-direction: column;
   max-width: 100%;
 }
+.main__nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.main__nav--button {
+    border: none;
+    padding: 0.4rem 0.4rem;
+    margin: 0.2rem 0.2rem 1rem 0.2rem;
+    cursor: pointer;
+    background-color: #000080;
+    color: #f2f2f2;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.main__nav--button:hover {
+    border: none;
+    padding: 0.4rem 0.4rem;
+    margin: 0.2rem 0.2rem 1rem 0.2rem;
+    cursor: pointer;
+    background-color: #dc143c;
+    color: #f2f2f2;
+    font-weight: bold;
+    font-size: 1rem;
+}
 .card {
   border: 0.2rem solid #dc143c;
   background: #f2f2f2;
   padding: 2rem;
-  margin: 2rem;
+  margin: 1rem;
   max-width: 50rem;
 }
 .card:hover {
@@ -69,6 +95,20 @@ main {
     flex-direction: column;
     margin: 0.5rem 0rem;
     padding: 0.5rem 0rem;
+}
+.card__child--nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding-top: 2.5rem;
+}
+.card__child--nav a {
+    color: #dc143c;
+}
+.card__child--nav a:hover {
+    color: #000080;
+    text-decoration: none;
 }
 .card__btn {
     border: none;
@@ -101,7 +141,7 @@ main {
   align-items: center;
   padding-bottom: 1rem;
 }
-.card a {
+a {
   text-decoration: none;
 }
 .card__postimage {

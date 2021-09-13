@@ -1,6 +1,9 @@
 <template>
     <footer>
-        <h1>Footer</h1>
+        <div class="nav">
+            <router-link to="/charte">Charte d'utilisation</router-link> || 
+            <router-link to="/rgpd">RGPD</router-link>
+        </div>
     </footer>
 </template>
 
@@ -16,5 +19,21 @@ footer {
     align-items: center;
     justify-content: center;
     margin-top: auto;
+}
+.nav {
+    margin: 1rem;
+    color: #000080;
+}
+.nav a{
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #000080;
+    font-weight: bold;
+}
+.nav a:hover{
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #dc143c;
+    font-weight: bold;
 }
 </style>

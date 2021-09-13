@@ -22,7 +22,7 @@
 import router from '../router';
 import axios from 'axios';
     export default {
-        name: "Connected",
+        name: "UserAccount",
         data() {
             return {
                 username: '',
@@ -59,16 +59,19 @@ import axios from 'axios';
                 })
             },
             deleteAccount() {
-                alert("Cette action supprimera définitevement votre compte et toutes les données associées (meesages, commentaires, etc) \nEtes-vous sûr(e) de vouloir continuer ?")
-                axios.delete("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
-                .then((response) => {
-                    alert(response.data.message);
-                    localStorage.clear()
-                    router.push("/");
-                })
-                .catch(function(error) {
-                    alert(error.response.data.error);
-                })
+                if (confirm("Cette action supprimera définitevement votre compte et toutes les données associées (meesages, commentaires, etc) \nEtes-vous sûr(e) de vouloir continuer ?")) {
+                    axios.delete("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
+                    .then((response) => {
+                        alert(response.data.message);
+                        localStorage.clear()
+                        router.push("/");
+                    })
+                    .catch(function(error) {
+                        alert(error.response.data.error);
+                    })
+                } else {
+                    alert("Votre compte n'a pas été supprimé")
+                }
             },
         },
         created: function() {
@@ -87,7 +90,6 @@ import axios from 'axios';
 
 <style scoped>
 .card {
-    /* border-radius: 2rem; */
     background: #f2f2f2;
     padding: 2rem;
     margin: 2rem;
@@ -106,7 +108,6 @@ import axios from 'axios';
 }
 .card__btn {
     border: 0.15rem solid #dc143c;
-    /* border-radius: 2rem; */
     padding: 0.2rem 0.4rem;
     margin: 0.2rem 0.4rem;
     cursor: pointer;
@@ -117,7 +118,6 @@ import axios from 'axios';
 }
 .card__avatar--file {
     border: 0.15rem solid #dc143c;
-    /* border-radius: 2rem; */
     padding: 0.2rem 0.4rem;
     cursor: pointer;
     background-color: #f2f2f2;
@@ -128,7 +128,7 @@ import axios from 'axios';
 input[type="file"] {
     display: none;
 }
-.usercard__options {
+.card__options {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
