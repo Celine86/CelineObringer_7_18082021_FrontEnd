@@ -1,5 +1,8 @@
 <template>
     <main>
+        <div class="main__nav">
+            <button class="main__nav--button" @click="reload()">Recharger les Posts</button>
+        </div>
         <div v-for="post in posts" :key="post.id" class="wrap">
             <a :href="'#/singlepost/' + post.id" >
                 <div class="card">
@@ -13,16 +16,18 @@
                         <p>{{ post.content }}</p>
                     </div>
                     <div class="card__child--nav">
-                    <p><a :href="'#/singlepost/' + post.id">Laisser un commentaire</a> || 
-                        <a :href="'#/singlepost/' + post.id">Voir les commentaires</a></p>
+                        <p><a :href="'#/addcomment/' + post.id">Commenter</a> || 
+                        <a :href="'#/singlepost/' + post.id">Voir</a></p>
+                    </div>
+                    <div>
+                        <p class="important--blue">Post commenté <span class="important--red">{{ post.Comments.length }}</span> fois</p>
                     </div>
                 </div>
             </a>
             <div class="main__nav">
-                <button class="main__nav--button">Ajouter un Post</button>
+                <a :href="'#/addpost/'" class="main__nav--button"> Ajouter un post </a>
             </div>
         </div>
-
     </main>
 </template>
 
@@ -37,14 +42,20 @@ export default {
             posts: [],
         }
     },
+    methods: {
+        reload() {
+            location.reload();
+        }
+    }, 
     created() {
         axios.get("http://localhost:3000/api/posts/", { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
         .then(response => {
             const resp = response.data
             this.posts = resp
+            console.log(response.data)
         })
         .catch((error) => {
-            alert(error.response.data.error);
+            this.error = error.response.data.error
         })
     }
 }
@@ -57,5 +68,16 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+.important--red {
+    color: #dc143c;
+}
+.important--blue {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000080;
+}
+.card__child--nav {
+    padding-bottom: 2rem;
 }
 </style>

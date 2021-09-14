@@ -1,6 +1,5 @@
 <template>
     <main>
-        <h1>SignUp</h1>
         <form @submit.prevent class="card">
             <div class="card__child">
                 <label for="myUsername" class="card__input">Pseudonyme </label>
@@ -15,13 +14,14 @@
                 <input type="text" v-model="myPassword">
             </div>
             <div class="card__child">
-                <button @click="submit()" 
+                <button 
+                @click="submit()" 
                 class="card__btn" 
                 :class="{'card__btn--disabled' : !checkFields}"
-                :disabled="!checkFields">
-                S'inscrire</button>
+                :disabled="!checkFields">S'inscrire</button>
             </div>
         </form>
+            <div class="alert" v-if="error != ''"> {{ error }} </div>
     </main>
 </template>
 
@@ -35,6 +35,7 @@ export default {
             myUsername: "",
             myEmail: "",
             myPassword: "",
+            error: "",
         }
     },
     computed: { 
@@ -51,13 +52,11 @@ export default {
             const myUsername = this.myUsername
             const myEmail = this.myEmail
             const myPassword = this.myPassword
-            axios.post('http://localhost:3000/api/users/signup', { email: myEmail, username: myUsername, password: myPassword })
-            .then(function (response) {
-                //console.log(response);
-                if (response.statusText==="Created") {
-                    alert("Votre compte a été créé vous allez être redirigé vers votre profil")
+            axios.post('http://127.0.0.1:3000/api/users/signup', { email: myEmail, username: myUsername, password: myPassword })
+            .then((response) => {
+                if (response.status === 201) {
                     axios.post('http://localhost:3000/api/users/login', { username: myUsername, password: myPassword })
-                    .then(function (response) {
+                    .then((response) => {
                         localStorage.setItem("token",response.data.token)
                         localStorage.setItem("userId",response.data.userId)
                         localStorage.setItem("username",response.data.username)
@@ -65,14 +64,15 @@ export default {
                         localStorage.setItem("avatar",response.data.avatar)
                         localStorage.setItem("role",response.data.role)                    
                         router.push("/useraccount");
+
                     })
-                    .catch(function(error){
-                        alert(error.response.data.error);
-                    })
+                    .catch((error) => {
+                        this.error = error.response.data.error
+                    }) 
                 }
             })
-            .catch(function (error) {
-                alert(error.response.data.error);
+            .catch((error) => {
+                this.error = error.response.data.error
             })
         }
     }
@@ -80,5 +80,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

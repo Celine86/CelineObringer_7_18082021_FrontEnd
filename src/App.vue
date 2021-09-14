@@ -83,7 +83,7 @@ main {
   border: 0.2rem solid #dc143c;
   background: #f2f2f2;
   padding: 2rem;
-  margin: 1rem;
+  margin: 0rem;
   max-width: 50rem;
 }
 .card:hover {
@@ -153,5 +153,21 @@ a {
   max-width: 35px;
   height: auto;
   margin: 0 1rem;
+}
+.alert {
+  border: 0.2rem solid #000080;
+  background-color: #dc143c;
+  color: #f2f2f2;
+  padding: 0.5rem;
+  margin: 1rem;
+  max-width: 20rem;
+}
+.important--red {
+    color: #dc143c;
+}
+.important--blue {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000080;
 }
 </style>

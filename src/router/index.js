@@ -32,9 +32,19 @@ const routes = [
     component: () => import("../views/SinglePost"),
   },
   {
-    path: '/rgpd',
-    name: 'Rgpd',
-    component: () => import("../views/Rgpd"),
+    path: '/addpost',
+    name: 'AddPost',
+    component: () => import("../views/AddPost"),
+  },
+  {
+    path: '/singlecomment/:id',
+    name: 'SingleComment',
+    component: () => import("../views/SingleComment"),
+  },
+  {
+    path: '/addcomment/:id',
+    name: 'AddComment',
+    component: () => import("../views/AddComment"),
   },
   {
     path: '/charte',
@@ -49,7 +59,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const visitorPages = ["/", "/signin", "/signup", "/rgpd", "/charte"]
+  const visitorPages = ["/", "/signin", "/signup", "/charte"]
   const loggedUserPages = !visitorPages.includes(to.path)
   const loggedUser = localStorage.getItem("token")
   if (loggedUserPages && !loggedUser) {

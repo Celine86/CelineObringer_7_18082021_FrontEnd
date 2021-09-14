@@ -1,6 +1,5 @@
 <template>
     <main>
-        <h1>SignIn</h1>
         <form @submit.prevent class="card">
             <div class="card__child">
                 <label for="myUsername" class="card__input">Pseudonyme </label>
@@ -18,6 +17,7 @@
                 Se connecter</button>
             </div>
         </form>
+        <div class="alert" v-if="error != ''"> {{ error }} </div>
     </main>
 </template>
 
@@ -30,6 +30,7 @@ export default {
         return {
             myUsername: "",
             myPassword: "",
+            error: "",
         }
     },
     computed: { 
@@ -44,19 +45,17 @@ export default {
     methods: {
         submit() {
             axios.post('http://localhost:3000/api/users/login', { username: this.myUsername, password: this.myPassword})
-            .then(function (response) {
+            .then((response) => {
                 localStorage.setItem("token",response.data.token)
                 localStorage.setItem("userId",response.data.userId)
                 localStorage.setItem("username",response.data.username)
                 localStorage.setItem("email",response.data.email)
                 localStorage.setItem("avatar",response.data.avatar)
-                localStorage.setItem("role",response.data.role) 
-                //alert(response.data.message);                   
-                router.push("/useraccount");
+                localStorage.setItem("role",response.data.role)                 
+                router.push("/posts");
             })
-            .catch(function(error){
-                console.log(error.response.data.error);
-                alert(error.response.data.error);
+            .catch((error) => {
+                this.error = error.response.data.error
             })
         }
     }
@@ -64,5 +63,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

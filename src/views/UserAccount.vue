@@ -13,8 +13,12 @@
                 <button @click="logout()" class="card__btn">Se déconnecter</button>
                 <button @click="deleteAccount()" class="card__btn">Supprimer mon compte</button>
             </div>
-
+            <div>
+                <label for="delete">Etes-vous sûr de vouloir supprimer votre compte ? </label>
+                <input type="checkbox" id="delete" name="delete">
+            </div>
         </div>
+        <div class="alert" v-if="error != ''"> {{ error }} </div>
     </main>
 </template>
 
@@ -29,7 +33,7 @@ import axios from 'axios';
                 email: '',
                 avatar: '',
                 file: null,
-                message: '',
+                error: '',
             }
         },
         methods: {
@@ -50,27 +54,25 @@ import axios from 'axios';
                 const formData = new FormData();
                 formData.append("image", this.file);
                 axios.put("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), formData, { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
-                .then(function(response) {
-                    alert(response.data.message);
+                .then(() => {
                     location.reload();
                 })
-                .catch(function(error) {
-                    alert(error.response.data.error);
+                .catch((error) => {
+                    this.error = error.response.data.error
                 })
             },
             deleteAccount() {
-                if (confirm("Cette action supprimera définitevement votre compte et toutes les données associées (meesages, commentaires, etc) \nEtes-vous sûr(e) de vouloir continuer ?")) {
+                if (document.getElementById('delete').checked) {
                     axios.delete("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
-                    .then((response) => {
-                        alert(response.data.message);
+                    .then(() => {
                         localStorage.clear()
                         router.push("/");
                     })
-                    .catch(function(error) {
-                        alert(error.response.data.error);
+                    .catch((error) => {
+                        this.error = error.response.data.error
                     })
                 } else {
-                    alert("Votre compte n'a pas été supprimé")
+                    location.reload();
                 }
             },
         },
@@ -81,8 +83,8 @@ import axios from 'axios';
                 this.email = user.data.userInfos.email;
                 this.avatar = user.data.userInfos.avatar;
             })
-            .catch(function(error) {
-               alert(error.response.data.error);
+            .catch((error) => {
+               this.error = error.response.data.error
             })
         },
     }
@@ -90,10 +92,6 @@ import axios from 'axios';
 
 <style scoped>
 .card {
-    background: #f2f2f2;
-    padding: 2rem;
-    margin: 2rem;
-    max-width: 50rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -119,6 +117,7 @@ import axios from 'axios';
 .card__avatar--file {
     border: 0.15rem solid #dc143c;
     padding: 0.2rem 0.4rem;
+    margin: 0.2rem 0.4rem;
     cursor: pointer;
     background-color: #f2f2f2;
     color: #000080;

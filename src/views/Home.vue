@@ -6,12 +6,14 @@
             </div>
             <div class="card__child">
                 <h1>Bienvenue !</h1>
-                <p>Avant de vous inscrire nous vous invitons à consulter la charte et prendre connaissance de la réglementation RGPD.<br>
-                En vous inscrivant vous reconnaissez avoir lu et accepté la charte !</p>
+                <p>Avant de vous inscrire nous vous invitons à consulter la charte d'utilisation.<br>
+                En vous inscrivant vous reconnaissez l'avoir lu et acceptée !<br>
+                N'hésitez pas à envoyer un e-mail à contecter le Service Communication pour toute question.<br>
+                Nous vous répondrons avec plaisir !</p>
             </div>
-            <div class="card__child--nav">
-                <p><router-link to="/signup">Créer un compte</router-link> || 
-                <router-link to="/signin">Se connecter</router-link></p>
+            <div class="card__child--nav--home">
+                <router-link class="card__btn" to="/signup">Inscription</router-link> 
+                <router-link class="card__btn" to="/signin">Connexion</router-link>
             </div>
         </div>
     </main>
@@ -24,16 +26,12 @@
 </script>
 
 <style scoped>
-.card {
-    border: 0.2rem solid #dc143c;
-    background: #f2f2f2;
-    padding: 2rem;
-    margin: 2rem;
-    max-width: 50rem;
-}
-.card__child {
-    margin: 0.5rem 0rem;
-    padding: 0.5rem 0rem;
+.card__child--nav--home {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding-top: 2.5rem;
 }
 .card__child--logo {
     display: block;
@@ -44,5 +42,9 @@
 }
 h1 {
     line-height: 4rem;
+}
+a {
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 </style>
