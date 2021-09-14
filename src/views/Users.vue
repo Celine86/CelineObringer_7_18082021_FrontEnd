@@ -1,0 +1,59 @@
+<template>
+    <main>
+        <div v-for="user in users" :key="user.id" class="card">
+            <a :href="'#/singleuser/' + user.id" >
+                <h2>{{ user.username }}</h2>
+                <img :src="user.avatar" class="card__avatar"><br>                    
+                <h3>{{ user.email }}</h3>
+            </a>
+        </div>
+        <div class="alert" v-if="error != ''"> {{ error }} </div>
+    </main>
+</template>
+
+<script>
+import axios from "axios"
+
+export default {
+    name: "Users",
+    data() {
+        return {
+            users: [],
+            error: "",
+        }
+    },
+    created() {
+        axios.get("http://localhost:3000/api/users/profils", { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
+        .then(response => {
+            const resp = response.data
+            this.users = resp
+        })
+        .catch((error) => {
+            this.error = error.response.data.error
+        })
+    }
+}
+</script>
+
+<style scoped>
+main {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: space-around;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+.card__avatar {
+    width: 100%;
+    max-width: 10rem;
+    height: auto;
+    margin: 0 2rem;
+}
+</style>

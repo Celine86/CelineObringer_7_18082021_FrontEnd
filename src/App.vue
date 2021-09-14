@@ -54,30 +54,30 @@ main {
   max-width: 100%;
 }
 .main__nav{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
 }
 .main__nav--button {
-    border: none;
-    padding: 0.4rem 0.4rem;
-    margin: 0.2rem 0.2rem 1rem 0.2rem;
-    cursor: pointer;
-    background-color: #000080;
-    color: #f2f2f2;
-    font-weight: bold;
-    font-size: 1rem;
+  border: none;
+  padding: 0.4rem 0.4rem;
+  margin: 0.2rem 0.2rem 1rem 0.2rem;
+  cursor: pointer;
+  background-color: #000080;
+  color: #f2f2f2;
+  font-weight: bold;
+  font-size: 1rem;
 }
 .main__nav--button:hover {
-    border: none;
-    padding: 0.4rem 0.4rem;
-    margin: 0.2rem 0.2rem 1rem 0.2rem;
-    cursor: pointer;
-    background-color: #dc143c;
-    color: #f2f2f2;
-    font-weight: bold;
-    font-size: 1rem;
+  border: none;
+  padding: 0.4rem 0.4rem;
+  margin: 0.2rem 0.2rem 1rem 0.2rem;
+  cursor: pointer;
+  background-color: #dc143c;
+  color: #f2f2f2;
+  font-weight: bold;
+  font-size: 1rem;
 }
 .card {
   border: 0.2rem solid #dc143c;
@@ -91,47 +91,47 @@ main {
   border: 0.2rem solid #000080;
 }
 .card__child {
-    display: flex;
-    flex-direction: column;
-    margin: 0.5rem 0rem;
-    padding: 0.5rem 0rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0rem;
+  padding: 0.5rem 0rem;
 }
 .card__child--nav {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    padding-top: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding-top: 2.5rem;
 }
 .card__child--nav a {
-    color: #dc143c;
+  color: #dc143c;
 }
 .card__child--nav a:hover {
-    color: #000080;
-    text-decoration: none;
+  color: #000080;
+  text-decoration: none;
 }
 .card__btn {
-    border: none;
-    padding: 0.4rem 0.4rem;
-    margin: 0.2rem 0.4rem;
-    cursor: pointer;
-    background-color: #000080;
-    color: #f2f2f2;
-    font-weight: bold;
-    font-size: 1rem;
+  border: none;
+  padding: 0.4rem 0.4rem;
+  margin: 0.2rem 0.4rem;
+  cursor: pointer;
+  background-color: #000080;
+  color: #f2f2f2;
+  font-weight: bold;
+  font-size: 1rem;
 }
 .card__btn--disabled {
-    background: #dc143c;
-    color: #f2f2f2;
+  background: #dc143c;
+  color: #f2f2f2;
 }
 .card__btn--disabled:hover {
-    cursor: not-allowed;
-    background: #f2f2f2;
-    color: #dc143c;
+  cursor: not-allowed;
+  background: #f2f2f2;
+  color: #dc143c;
 }
 .card__input {
-    color: #000080;
-    font-weight: bold;
+  color: #000080;
+  font-weight: bold;
 }
 .card__author {
   display: flex;
@@ -162,12 +162,20 @@ a {
   margin: 1rem;
   max-width: 20rem;
 }
+.message {
+  border: 0.2rem solid #dc143c;
+  background-color: #000080;
+  color: #f2f2f2;
+  padding: 0.5rem;
+  margin: 1rem;
+  max-width: 20rem;
+}
 .important--red {
-    color: #dc143c;
+  color: #dc143c;
 }
 .important--blue {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #000080;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000080;
 }
 </style>

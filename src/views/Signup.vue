@@ -7,11 +7,11 @@
             </div>
             <div class="card__child">
                 <label for="myEmail" class="card__input">Email </label>
-                <input type="text" v-model="myEmail">
+                <input type="email" v-model="myEmail">
             </div>
             <div class="card__child">
                 <label for="myPassword" class="card__input">Mot de passe</label>
-                <input type="text" v-model="myPassword">
+                <input type="password" v-model="myPassword">
             </div>
             <div class="card__child">
                 <button 

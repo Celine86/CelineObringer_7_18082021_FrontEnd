@@ -18,6 +18,7 @@
                 <input type="checkbox" id="delete" name="delete">
             </div>
         </div>
+        <div class="message" v-if="message != ''"> {{ message }} </div>
         <div class="alert" v-if="error != ''"> {{ error }} </div>
     </main>
 </template>
@@ -34,6 +35,7 @@ import axios from 'axios';
                 avatar: '',
                 file: null,
                 error: '',
+                message: '',
             }
         },
         methods: {
@@ -72,7 +74,8 @@ import axios from 'axios';
                         this.error = error.response.data.error
                     })
                 } else {
-                    location.reload();
+                    this.message = "Merci de cocher la case si vous souhaitez réellement supprimer votre compte"
+                    //location.reload();
                 }
             },
         },

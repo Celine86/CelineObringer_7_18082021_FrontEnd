@@ -22,6 +22,16 @@ const routes = [
     component: () => import("../views/UserAccount"),
   },
   {
+    path: '/singleuser/:id',
+    name: 'SingleUser',
+    component: () => import("../views/SingleUser"),
+  },
+  {
+    path: '/users',
+    name: 'Users',
+    component: () => import("../views/Users"),
+  },
+  {
     path: '/posts',
     name: 'Posts',
     component: () => import("../views/Posts"),

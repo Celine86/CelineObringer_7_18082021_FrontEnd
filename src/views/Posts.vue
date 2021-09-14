@@ -28,6 +28,7 @@
                 <a :href="'#/addpost/'" class="main__nav--button"> Ajouter un post </a>
             </div>
         </div>
+        <div class="alert" v-if="error != ''"> {{ error }} </div>
     </main>
 </template>
 
@@ -40,6 +41,7 @@ export default {
     data() {
         return {
             posts: [],
+            error: "",
         }
     },
     methods: {
@@ -52,7 +54,6 @@ export default {
         .then(response => {
             const resp = response.data
             this.posts = resp
-            console.log(response.data)
         })
         .catch((error) => {
             this.error = error.response.data.error
