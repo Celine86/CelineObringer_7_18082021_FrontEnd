@@ -20,7 +20,6 @@
 <script>
 import router from '../router';
 import axios from "axios"
-
 export default {
     name: "SingleUser",
     data() {
@@ -34,9 +33,9 @@ export default {
     computed: { 
         checkFields: function() {
             if (this.userRole === "true") {
-            return true;
+                return true;
             } else {
-            return false;
+                return false;
             }
         },
     },
@@ -45,7 +44,8 @@ export default {
             if (document.getElementById('delete').checked) {
                 let id = this.$route.params.id;
                 axios.delete(`http://127.0.0.1:3000/api/users/profils/${id}`, { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
-                .then(() => {
+                .then((response) => {
+                    this.message = response.data.message
                     router.push("/");
                 })
                 .catch((error) => {
@@ -61,8 +61,7 @@ export default {
         let id = this.$route.params.id;
         axios.get(`http://localhost:3000/api/users/profils/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
         .then(response => {
-            const resp = response.data.userInfos
-            this.user = resp
+            this.user = response.data.userInfos
             this.userRole = localStorage.getItem("role")
         })
         .catch((error) => {

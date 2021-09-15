@@ -9,13 +9,14 @@
                 <p>{{ comment.comment }}</p>
             </div>
             <div class="main__nav">
-                <a :href="'#/editcomment/' + comment.id" class="main__nav--button" :class="{'main__nav--button--disabled' : !checkFields}" :disabled="!checkFields">Modifier</a>
-                <button @click="deleteComment()" class="main__nav--button" :class="{'main__nav--button--disabled' : !checkFields}" :disabled="!checkFields">Supprimer</button>
+                <a :href="'#/editcomment/' + comment.id" class="main__nav--button" :class="{'main__nav--button--disabled' : !checkFields}" :hidden="!checkFields">Modifier</a>
+                <button @click="deleteComment()" class="main__nav--button" :class="{'main__nav--button--disabled' : !checkFields}" :hidden="!checkFields">Supprimer</button>
             </div>
             <div class="information">
                 <p class="information--p">Commentaire Modifié par {{ comment.modifiedBy }} </p>
             </div>
         </div>
+        <div class="message" v-if="message != ''"> {{ message }} </div>
         <div class="alert" v-if="error != ''"> {{ error }} </div>
     </main>
 </template>
@@ -23,7 +24,6 @@
 <script>
 import router from '../router';
 import axios from "axios"
-
 export default {
     name: "SingleComment",
     data() {
@@ -34,14 +34,15 @@ export default {
             userRole: "",
             authorID: "",
             error: "",
+            message: "",
         }
     },
     computed: { 
         checkFields: function() {
             if (this.userID === this.authorID || this.userRole === "true") {
-            return true;
+                return true;
             } else {
-            return false;
+                return false;
             }
         },
     },
@@ -49,7 +50,8 @@ export default {
         deleteComment() {
             let id = this.$route.params.id;
             axios.delete(`http://localhost:3000/api/posts/comment/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
-            .then(() => {
+            .then((response) => {
+                this.message = response.data.message
                 router.push("/posts")
             })
             .catch((error) => {
@@ -57,16 +59,13 @@ export default {
             })
         }
     },
-    created: function() {
+    created() {
         let id = this.$route.params.id;
         axios.get(`http://localhost:3000/api/posts/comment/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
         .then(response => {
-            const resp = response.data
-            this.comment = resp
-            const respuser = response.data.User
-            this.user = respuser
-            const authorID = response.data.User.id
-            this.authorID = authorID
+            this.comment = response.data
+            this.user = response.data.User
+            this.authorID = response.data.User.id
             this.userID = localStorage.getItem("userId")
             this.userRole = localStorage.getItem("role")
         })

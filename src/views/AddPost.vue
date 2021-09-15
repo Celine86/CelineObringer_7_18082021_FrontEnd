@@ -13,6 +13,7 @@
                 <input @change="modifyFile()" type="file" ref="file" name="image" id="File" accept=".jpg, .jpeg, .gif, .png" class="card__btn">
                 <input value="Valider" type="submit" @click="addPost()" class="card__btn" :class="{'card__btn--disabled' : !checkFields}" :disabled="!checkFields">
         </form>
+        <div class="message" v-if="message != ''"> {{ message }} </div>
         <div class="alert" v-if="error != ''"> {{ error }} </div>
     </main>
 </template>
@@ -20,7 +21,6 @@
 <script>
 import router from '../router';
 import axios from "axios"
-
 export default {
     name: "AddPost",
     data() {
@@ -30,14 +30,15 @@ export default {
             content: "",
             file: null,
             error: "",
+            message: "",
         }
     },
     computed: { 
         checkFields: function() {
             if (this.title != "" && this.content != "") {
-            return true;
+                return true;
             } else {
-            return false;
+                return false;
             }
         },
     },
@@ -53,11 +54,12 @@ export default {
             formData.set("content", this.content.toString())
             formData.set("UserId", this.currentUserId.toString())
             axios.post("http://localhost:3000/api/posts/create/", formData, { headers: { "Authorization":"Bearer " + localStorage.getItem("token")}})
-            .then(() => {
+            .then((response) => {
                 this.file = null
                 this.title = ""
                 this.content = ""
                 this.UserId = ""
+                this.message = response.data.message
                 router.push("/posts");
             })
             .catch((error) => {
@@ -65,7 +67,7 @@ export default {
             })
         }
     },
-    created: function() {
+    created() {
         this.currentUserId = localStorage.getItem("userId")
     }
 }

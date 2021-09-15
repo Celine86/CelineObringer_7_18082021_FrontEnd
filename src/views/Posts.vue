@@ -31,7 +31,7 @@
                 <a :href="'#/addpost/'" class="main__nav--button"> Ajouter un post </a>
             </div>
         </div>
-        <div class="alert" v-if="error != ''"> {{ error }} </div>
+            <div class="alert" v-if="error != ''"> {{ error }} </div>
     </main>
 </template>
 
@@ -56,8 +56,7 @@ export default {
     created() {
         axios.get("http://localhost:3000/api/posts/", { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
         .then(response => {
-            const resp = response.data
-            this.posts = resp
+            this.posts = response.data
         })
         .catch((error) => {
             this.error = error.response.data.error

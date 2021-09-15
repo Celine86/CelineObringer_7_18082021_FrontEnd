@@ -31,6 +31,9 @@ export default {
             editImage: "",
             error: "",
             message: "",
+            authorID: "",
+            userID: "",
+            userRole: "",
         }
     },
     methods: {
@@ -46,7 +49,6 @@ export default {
             let id = this.$route.params.id;
             axios.put(`http://localhost:3000/api/posts/${id}`, formData, { headers: { "Authorization":"Bearer " + localStorage.getItem("token")}})
             .then((response) => {
-                console.log(response.status)
                 if (response.status === 200) {
                     this.message = response.data.message
                     router.push("/posts");
@@ -56,7 +58,6 @@ export default {
                 this.error = error.response.data.error
             })
         }
-
     },
     created() {
         let id = this.$route.params.id;
@@ -65,6 +66,14 @@ export default {
             this.editTitle = response.data.title
             this.editContent = response.data.content
             this.editImage = response.data.imageUrl
+            let authorID =  response.data.User.id
+            let userID = localStorage.getItem("userId")
+            let userRole = localStorage.getItem("role")
+            if (userID === authorID || userRole === "true") {
+                this.message = "Vous pouvez modifer le post si vous le souhaitez"
+            } else {
+                router.push("/");
+            }
         })
         .catch((error) => {
             this.error = error.response.data.error

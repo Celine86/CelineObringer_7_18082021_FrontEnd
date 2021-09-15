@@ -6,7 +6,7 @@
                 <textarea id="editComment" v-model="editComment" rows="10" cols="50" resize:none></textarea>
             </div>
             <div>
-                <input value="Valider" type="submit" @click="modifyComment()">
+                <input value="Valider" type="submit" @click="modifyComment()" class="card__btn">
             </div>
         </div>
         <div class="alert" v-if="error != ''"> {{ error }} </div>
@@ -16,7 +16,7 @@
 
 <script>
 import axios from "axios"
-//import router from "../router"
+import router from "../router"
 export default {
     name: "EditPost",
     data() {
@@ -31,24 +31,31 @@ export default {
             let id = this.$route.params.id;
             axios.put(`http://localhost:3000/api/posts/comment/${id}`, {"comment": this.editComment }, { headers: { "Authorization":"Bearer " + localStorage.getItem("token")}})
             .then((response) => {
-                console.log(response.status)
                 if (response.status === 200) {
                     this.message = response.data.message
-                    //router.push(`/singlepost/${id}`);
+                    router.push(`/singlecomment/${id}`);
                 }
             })
             .catch((error) => {
                 this.error = error.response.data.error
             })
         }
-
     },
     created() {
         let id = this.$route.params.id;
         axios.get(`http://localhost:3000/api/posts/comment/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
         .then(response => {
-            console.log(response.data)
+            console.log(response)
+            console.log(response.data.User.id)
             this.editComment = response.data.comment
+            let authorID =  response.data.User.id
+            let userID = localStorage.getItem("userId")
+            let userRole = localStorage.getItem("role")
+            if (userID === authorID || userRole === "true") {
+                this.message = "Vous pouvez modifer le commentaire si vous le souhaitez"
+            } else {
+                router.push("/");
+            }
         })
         .catch((error) => {
             this.error = error.response.data.error

@@ -1,7 +1,8 @@
 <template>
     <footer>
         <div class="nav">
-            <router-link to="/charte">Charte d'utilisation</router-link>
+            <router-link to="/charte">Charte d'utilisation</router-link> || 
+            <router-link to="/users">Annuaire</router-link>
         </div>
     </footer>
 </template>

@@ -30,21 +30,18 @@ export default {
     name: "UserAccount",
     data() {
         return {
-            username: '',
-            email: '',
-            avatar: '',
+            username: "",
+            email: "",
+            avatar: "",
             file: null,
-            error: '',
-            message: '',
+            error: "",
+            message: "",
         }
     },
     methods: {
         logout() {
             localStorage.removeItem("token");
             localStorage.removeItem("userId");
-            localStorage.removeItem("username");
-            localStorage.removeItem("email");
-            localStorage.removeItem("avatar");
             localStorage.removeItem("role");
             router.push("/");
         },
@@ -56,7 +53,8 @@ export default {
             const formData = new FormData();
             formData.append("image", this.file);
             axios.put("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), formData, { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
-            .then(() => {
+            .then((response) => {
+                this.message = response.data.message
                 location.reload();
             })
             .catch((error) => {
@@ -66,7 +64,8 @@ export default {
         deleteAccount() {
             if (document.getElementById('delete').checked) {
                 axios.delete("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
-                .then(() => {
+                .then((response) => {
+                    this.message = response.data.message
                     localStorage.clear()
                     router.push("/");
                 })
@@ -79,7 +78,7 @@ export default {
             }
         },
     },
-    created: function() {
+    created() {
         axios.get("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"),{ headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
         .then(user => {
             this.username = user.data.userInfos.username;

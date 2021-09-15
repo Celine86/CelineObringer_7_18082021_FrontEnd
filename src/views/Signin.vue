@@ -3,20 +3,17 @@
         <form @submit.prevent class="card">
             <div class="card__child">
                 <label for="myUsername" class="card__input">Pseudonyme </label>
-                <input type="text" v-model="myUsername">
+                <input type="text" v-model="myUsername" name="myUsername" id="myUsername">
             </div>
             <div class="card__child">
                 <label for="myPassword" class="card__input">Mot de passe </label>
-                <input type="password" v-model="myPassword">
+                <input type="password" v-model="myPassword" name="myPassword" id="myPassword">
             </div>
             <div class="card__child">
-                <button @click="submit()" 
-                class="card__btn" 
-                :class="{'card__btn--disabled' : !checkFields}"
-                :disabled="!checkFields">
-                Se connecter</button>
+                <button @click="submit()" class="card__btn" :class="{'card__btn--disabled' : !checkFields}" :disabled="!checkFields">Se connecter</button>
             </div>
         </form>
+        <div class="message" v-if="message != ''"> {{ message }} </div>
         <div class="alert" v-if="error != ''"> {{ error }} </div>
     </main>
 </template>
@@ -31,14 +28,15 @@ export default {
             myUsername: "",
             myPassword: "",
             error: "",
+            message: "",
         }
     },
     computed: { 
         checkFields: function() {
             if (this.myUsername != "" && this.myPassword != "") {
-            return true;
+                return true;
             } else {
-            return false;
+                return false;
             }
         },
     },
@@ -48,10 +46,8 @@ export default {
             .then((response) => {
                 localStorage.setItem("token",response.data.token)
                 localStorage.setItem("userId",response.data.userId)
-                localStorage.setItem("username",response.data.username)
-                localStorage.setItem("email",response.data.email)
-                localStorage.setItem("avatar",response.data.avatar)
-                localStorage.setItem("role",response.data.role)                 
+                localStorage.setItem("role",response.data.role)
+                //this.message = response.data.message                 
                 router.push("/posts");
             })
             .catch((error) => {
