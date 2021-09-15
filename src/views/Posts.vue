@@ -22,6 +22,9 @@
                     <div>
                         <p class="important--blue">Post commenté <span class="important--red">{{ post.Comments.length }}</span> fois</p>
                     </div>
+                    <div class="information">
+                        <p class="information--p">Post Modifié par {{ post.modifiedBy }} </p>
+                    </div>
                 </div>
             </a>
             <div class="main__nav">
@@ -42,6 +45,7 @@ export default {
         return {
             posts: [],
             error: "",
+            modifiedBy: "",
         }
     },
     methods: {

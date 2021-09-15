@@ -1,0 +1,83 @@
+<template>
+    <main>  
+
+        <form @submit.prevent enctype="multipart/form-data" class="card">
+            <div class="card__child">
+                <label for="editTitle" class="card__input">Titre </label>
+                <input type="text" v-model="editTitle">
+            </div>
+            <div class="card__child">
+                <label for="editContent" class="card__input">Message </label>
+                <textarea id="editContent" v-model="editContent" rows="10" cols="50" resize:none></textarea>
+            </div>
+                <img :src="editImage" class="card__postimage">
+                <label class="card__post--file">Modifier l'image ?</label>
+                <input @change="modifyFile()" type="file" ref="file" name="image" id="File" accept=".jpg, .jpeg, .gif, .png" class="card__btn">
+                <input value="Valider" type="submit" @click="modifyPost()" class="card__btn">
+        </form>
+        <div class="alert" v-if="error != ''"> {{ error }} </div>
+        <div class="message" v-if="message != ''"> {{ message }} </div>
+    </main>
+</template>
+
+<script>
+import axios from "axios"
+import router from "../router"
+
+export default {
+    name: "EditPost",
+    data() {
+        return {            
+            editTitle: "",
+            editContent: "",
+            editImage: "",
+            authorId: "",
+            error: "",
+            message: "",
+        }
+    },
+    methods: {
+        modifyFile() {
+            this.file = this.$refs.file.files[0];
+            this.avatar = URL.createObjectURL(this.file);
+        },
+        modifyPost() {
+            const formData = new FormData()
+            formData.set("image", this.file)
+            formData.set("title", this.editTitle.toString())
+            formData.set("content", this.editContent.toString())
+            formData.set("UserId", this.authorId.toString())
+            let id = this.$route.params.id;
+            axios.put(`http://localhost:3000/api/posts/${id}`, formData, { headers: { "Authorization":"Bearer " + localStorage.getItem("token")}})
+            .then((response) => {
+                console.log(response.status)
+                if (response.status === 200) {
+                    this.message = response.data.message
+                    router.push("/posts");
+                }
+            })
+            .catch((error) => {
+                this.error = error.response.data.error
+            })
+        }
+
+    },
+    created() {
+        let id = this.$route.params.id;
+        axios.get(`http://localhost:3000/api/posts/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
+        .then(response => {
+            this.editTitle = response.data.title
+            this.editContent = response.data.content
+            this.editImage = response.data.imageUrl
+        })
+        .catch((error) => {
+            this.error = error.response.data.error
+        })
+    }
+}
+
+
+</script>
+
+<style scoped>
+</style>

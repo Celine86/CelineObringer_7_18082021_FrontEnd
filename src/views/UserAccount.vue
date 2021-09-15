@@ -26,71 +26,71 @@
 <script>
 import router from '../router';
 import axios from 'axios';
-    export default {
-        name: "UserAccount",
-        data() {
-            return {
-                username: '',
-                email: '',
-                avatar: '',
-                file: null,
-                error: '',
-                message: '',
-            }
+export default {
+    name: "UserAccount",
+    data() {
+        return {
+            username: '',
+            email: '',
+            avatar: '',
+            file: null,
+            error: '',
+            message: '',
+        }
+    },
+    methods: {
+        logout() {
+            localStorage.removeItem("token");
+            localStorage.removeItem("userId");
+            localStorage.removeItem("username");
+            localStorage.removeItem("email");
+            localStorage.removeItem("avatar");
+            localStorage.removeItem("role");
+            router.push("/");
         },
-        methods: {
-            logout() {
-                localStorage.removeItem("token");
-                localStorage.removeItem("userId");
-                localStorage.removeItem("username");
-                localStorage.removeItem("email");
-                localStorage.removeItem("avatar");
-                localStorage.removeItem("role");
-                router.push("/");
-            },
-            modifyFile() {
-                this.file = this.$refs.file.files[0];
-                this.avatar = URL.createObjectURL(this.file);
-            },
-            updateAvatar() {
-                const formData = new FormData();
-                formData.append("image", this.file);
-                axios.put("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), formData, { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
+        modifyFile() {
+            this.file = this.$refs.file.files[0];
+            this.avatar = URL.createObjectURL(this.file);
+        },
+        updateAvatar() {
+            const formData = new FormData();
+            formData.append("image", this.file);
+            axios.put("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), formData, { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
+            .then(() => {
+                location.reload();
+            })
+            .catch((error) => {
+                this.error = error.response.data.error
+            })
+        },
+        deleteAccount() {
+            if (document.getElementById('delete').checked) {
+                axios.delete("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
                 .then(() => {
-                    location.reload();
+                    localStorage.clear()
+                    router.push("/");
                 })
                 .catch((error) => {
                     this.error = error.response.data.error
                 })
-            },
-            deleteAccount() {
-                if (document.getElementById('delete').checked) {
-                    axios.delete("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
-                    .then(() => {
-                        localStorage.clear()
-                        router.push("/");
-                    })
-                    .catch((error) => {
-                        this.error = error.response.data.error
-                    })
-                } else {
-                    this.message = "Merci de cocher la case si vous souhaitez réellement supprimer votre compte"
-                    //location.reload();
-                }
-            },
+            } else {
+                this.message = "Merci de cocher la case si vous souhaitez réellement supprimer votre compte"
+                //location.reload();
+            }
         },
-        created: function() {
-            axios.get("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"),{ headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
-            .then(user => {
-                this.username = user.data.userInfos.username;
-                this.email = user.data.userInfos.email;
-                this.avatar = user.data.userInfos.avatar;
-            })
-            .catch((error) => {
-               this.error = error.response.data.error
-            })
-        },
-    }
+    },
+    created: function() {
+        axios.get("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"),{ headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
+        .then(user => {
+            this.username = user.data.userInfos.username;
+            this.email = user.data.userInfos.email;
+            this.avatar = user.data.userInfos.avatar;
+        })
+        .catch((error) => {
+            this.error = error.response.data.error
+        })
+    },
+}
 </script>
 
 <style scoped>

@@ -52,9 +52,6 @@ export default {
             formData.set("title", this.title.toString())
             formData.set("content", this.content.toString())
             formData.set("UserId", this.currentUserId.toString())
-
-            console.log(formData)
-
             axios.post("http://localhost:3000/api/posts/create/", formData, { headers: { "Authorization":"Bearer " + localStorage.getItem("token")}})
             .then(() => {
                 this.file = null

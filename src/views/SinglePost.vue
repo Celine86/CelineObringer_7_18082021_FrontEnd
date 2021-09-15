@@ -12,9 +12,12 @@
             </div>
             <div class="main__nav">
                 <a :href="'#/addcomment/' + post.id" class="main__nav--button"> Ajouter un commentaire </a>
-                <button class="main__nav--button" :class="{'main__nav--button--disabled' : !checkFields}" :disabled="!checkFields">Modifier</button>
+                <a :href="'#/editpost/' + post.id" class="main__nav--button" :class="{'main__nav--button--disabled' : !checkFields}" :disabled="!checkFields">Modifier</a>
                 <button class="main__nav--button" @click="deletePost()" :class="{'main__nav--button--disabled' : !checkFields}" :disabled="!checkFields">Supprimer</button>
             </div>
+                <div class="information">
+                    <p class="information--p">Post Modifié par {{ post.modifiedBy }} </p>
+                </div>
             <div v-for="comment in comments" :key="comment.id" class="card__child">
                 <a :href="'#/singlecomment/' + comment.id" >
                     <div class="card__author">

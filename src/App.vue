@@ -170,6 +170,13 @@ a {
   margin: 1rem;
   max-width: 20rem;
 }
+.information {
+  margin-top: 2rem;
+}
+.information--p {
+  font-size: 0.75rem;
+
+}
 .important--red {
   color: #dc143c;
 }

@@ -47,6 +47,11 @@ const routes = [
     component: () => import("../views/AddPost"),
   },
   {
+    path: '/editpost/:id',
+    name: 'EditPost',
+    component: () => import("../views/EditPost"),
+  },
+  {
     path: '/singlecomment/:id',
     name: 'SingleComment',
     component: () => import("../views/SingleComment"),
@@ -55,6 +60,11 @@ const routes = [
     path: '/addcomment/:id',
     name: 'AddComment',
     component: () => import("../views/AddComment"),
+  },
+  {
+    path: '/editcomment/:id',
+    name: 'EditComment',
+    component: () => import("../views/EditComment"),
   },
   {
     path: '/charte',
