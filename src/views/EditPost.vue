@@ -1,6 +1,5 @@
 <template>
     <main>  
-
         <form @submit.prevent enctype="multipart/form-data" class="card">
             <div class="card__child">
                 <label for="editTitle" class="card__input">Titre </label>
@@ -23,7 +22,6 @@
 <script>
 import axios from "axios"
 import router from "../router"
-
 export default {
     name: "EditPost",
     data() {
@@ -31,7 +29,6 @@ export default {
             editTitle: "",
             editContent: "",
             editImage: "",
-            authorId: "",
             error: "",
             message: "",
         }
@@ -46,7 +43,6 @@ export default {
             formData.set("image", this.file)
             formData.set("title", this.editTitle.toString())
             formData.set("content", this.editContent.toString())
-            formData.set("UserId", this.authorId.toString())
             let id = this.$route.params.id;
             axios.put(`http://localhost:3000/api/posts/${id}`, formData, { headers: { "Authorization":"Bearer " + localStorage.getItem("token")}})
             .then((response) => {
@@ -75,8 +71,6 @@ export default {
         })
     }
 }
-
-
 </script>
 
 <style scoped>

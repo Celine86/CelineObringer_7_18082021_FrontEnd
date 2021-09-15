@@ -39,7 +39,6 @@ export default {
     methods: {
         addComment() {
             let id = this.$route.params.id;
-            console.log(id)
             axios.post(`http://localhost:3000/api/posts/${id}/comment`, { "UserId": this.currentUserId, "comment": this.comment }, { headers: { "Authorization":"Bearer " + localStorage.getItem("token")}})
             .then(() => {
                 this.comment = ""

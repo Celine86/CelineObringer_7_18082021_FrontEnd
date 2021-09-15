@@ -27,6 +27,9 @@
                     <div>
                         <p>{{ comment.comment }}</p>
                     </div> 
+                    <div class="information">
+                        <p class="information--p">Commentaire Modifié par {{ comment.modifiedBy }} </p>
+                    </div>
                 </a> 
             </div>
         </div>

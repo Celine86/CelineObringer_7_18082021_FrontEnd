@@ -9,8 +9,11 @@
                 <p>{{ comment.comment }}</p>
             </div>
             <div class="main__nav">
-                <button class="main__nav--button" :class="{'main__nav--button--disabled' : !checkFields}" :disabled="!checkFields">Modifier</button>
+                <a :href="'#/editcomment/' + comment.id" class="main__nav--button" :class="{'main__nav--button--disabled' : !checkFields}" :disabled="!checkFields">Modifier</a>
                 <button @click="deleteComment()" class="main__nav--button" :class="{'main__nav--button--disabled' : !checkFields}" :disabled="!checkFields">Supprimer</button>
+            </div>
+            <div class="information">
+                <p class="information--p">Commentaire Modifié par {{ comment.modifiedBy }} </p>
             </div>
         </div>
         <div class="alert" v-if="error != ''"> {{ error }} </div>
@@ -78,6 +81,7 @@ export default {
 .main__nav{
     justify-content: flex-end;
     padding-bottom: 0rem;
+    padding-top: 2rem;
 }
 .main__nav--button {
     padding: 0.2rem 0.2rem;
