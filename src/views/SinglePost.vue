@@ -12,8 +12,8 @@
             </div>
             <div class="main__nav">
                 <a :href="'#/addcomment/' + post.id" class="main__nav--button"> Ajouter un commentaire </a>
-                <a :href="'#/editpost/' + post.id" class="main__nav--button" :class="{'main__nav--button--disabled' : !checkFields}" :hidden="!checkFields">Modifier</a>
-               <button class="main__nav--button" @click="deletePost()" :class="{'main__nav--button--disabled' : !checkFields}" :hidden="!checkFields">Supprimer</button>
+                <a :href="'#/editpost/' + post.id" class="main__nav--button" :hidden="!checkFields">Modifier</a>
+               <button class="main__nav--button" @click="deletePost()" :hidden="!checkFields">Supprimer</button>
             </div>
                 <div class="information">
                     <p class="information--p">Post Modifié par {{ post.modifiedBy }} </p>
@@ -110,23 +110,8 @@ export default {
     color: #000080;
     font-weight: lighter;
 }
-.main__nav--button--disabled {
-    border: 0.1rem solid #dc143c;
-    padding: 0.2rem 0.2rem;
-    margin: 1.5rem 0.2rem 0rem 0.2rem;
-    background-color: #f2f2f2;
-    color: #dc143c;
-    font-weight: lighter;
-}
 .main__nav--button:hover {
     border: 0.1rem solid #dc143c;
-    padding: 0.2rem 0.2rem;
-    margin: 1.5rem 0.2rem 0rem 0.2rem;
-    font-weight: lighter;
-}
-.main__nav--button--disabled:hover {
-    border: 0.1rem solid #000080;
-    cursor: not-allowed;
     padding: 0.2rem 0.2rem;
     margin: 1.5rem 0.2rem 0rem 0.2rem;
     font-weight: lighter;

@@ -103,19 +103,12 @@ export default {
     align-content: space-around;
 }
 .card__avatar {
-    width: 100%;
     max-width: 25rem;
-    height: auto;
 }
 .card__btn {
     border: 0.15rem solid #dc143c;
-    padding: 0.2rem 0.4rem;
-    margin: 0.2rem 0.4rem;
-    cursor: pointer;
     background-color: #f2f2f2;
     color: #000080;
-    font-weight: bold;
-    font-size: 1rem;
 }
 .card__avatar--file {
     border: 0.15rem solid #dc143c;

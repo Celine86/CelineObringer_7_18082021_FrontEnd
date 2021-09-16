@@ -19,20 +19,10 @@ footer {
     justify-content: center;
     margin-top: auto;
 }
-.nav {
-    margin: 1rem;
-    color: #000080;
-}
 .nav a{
     font-size: 0.8rem;
-    text-transform: uppercase;
-    color: #000080;
-    font-weight: bold;
 }
 .nav a:hover{
     font-size: 0.8rem;
-    text-transform: uppercase;
-    color: #dc143c;
-    font-weight: bold;
 }
 </style>

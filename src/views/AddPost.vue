@@ -75,16 +75,7 @@ export default {
 </script>
 
 <style scoped>
-.card__post--file {
-    background-color: #f2f2f2;
-    color: #000080;
-    font-weight: bold;
-    font-size: 1rem;
-}
 input[type="file"] {
     font-size: bold;
-}
-textarea {
-    resize: none;
 }
 </style>

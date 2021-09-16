@@ -21,9 +21,6 @@ export default {
         logout() {
             localStorage.removeItem("token");
             localStorage.removeItem("userId");
-            localStorage.removeItem("username");
-            localStorage.removeItem("email");
-            localStorage.removeItem("avatar");
             localStorage.removeItem("role");
             router.push("/");
         },
@@ -39,20 +36,10 @@ header {
     justify-content: center;
     height: 25vh;
 }
-.nav {
-    margin: 1rem;
-    color: #000080;
-}
 .nav a{
     font-size: 1.2rem;
-    text-transform: uppercase;
-    color: #000080;
-    font-weight: bold;
 }
 .nav a:hover{
     font-size: 1.2rem;
-    text-transform: uppercase;
-    color: #dc143c;
-    font-weight: bold;
 }
 </style>

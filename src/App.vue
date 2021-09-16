@@ -185,4 +185,45 @@ a {
   font-weight: bold;
   color: #000080;
 }
+.nav {
+    margin: 1rem;
+    color: #000080;
+}
+.nav a{
+    text-transform: uppercase;
+    color: #000080;
+    font-weight: bold;
+}
+.nav a:hover{
+    text-transform: uppercase;
+    color: #dc143c;
+    font-weight: bold;
+}
+textarea {
+    resize: none;
+}
+.card__post--file {
+    background-color: #f2f2f2;
+    color: #000080;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.card__child--logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 20rem;
+    height: auto;
+}
+.wrap {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.card__avatar {
+    width: 100%;
+    height: auto;
+}
 </style>

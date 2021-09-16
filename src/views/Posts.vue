@@ -2,6 +2,7 @@
     <main>
         <div class="main__nav">
             <button class="main__nav--button" @click="reload()">Recharger les Posts</button>
+            <a :href="'#/addpost/'" class="main__nav--button"> Ajouter un post </a>
         </div>
         <div v-for="post in posts" :key="post.id" class="wrap">
             <a :href="'#/singlepost/' + post.id" >
@@ -67,21 +68,6 @@ export default {
 </script>
 
 <style scoped>
-.wrap {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-.important--red {
-    color: #dc143c;
-}
-.important--blue {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #000080;
-}
 .card__child--nav {
     padding-bottom: 2rem;
 }

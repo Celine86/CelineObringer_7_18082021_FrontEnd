@@ -11,7 +11,7 @@
                 N'hésitez pas à contacter le Service Communication pour toute question.<br>
                 Nous vous répondrons avec plaisir !</p>
             </div>
-            <div class="card__child--nav--home">
+            <div class="card__child--nav">
                 <router-link class="card__btn" to="/signup">Inscription</router-link> 
                 <router-link class="card__btn" to="/signin">Connexion</router-link>
             </div>
@@ -26,25 +26,17 @@
 </script>
 
 <style scoped>
-.card__child--nav--home {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    padding-top: 2.5rem;
-}
-.card__child--logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 20rem;
-    height: auto;
-}
 h1 {
     line-height: 4rem;
 }
 a {
     font-weight: bold;
     font-size: 1.2rem;
+}
+.card__btn {
+    color: #f2f2f2;
+}
+.card__btn:hover {
+    color: #f2f2f2;
 }
 </style>

@@ -9,8 +9,8 @@
                 <p>{{ comment.comment }}</p>
             </div>
             <div class="main__nav">
-                <a :href="'#/editcomment/' + comment.id" class="main__nav--button" :class="{'main__nav--button--disabled' : !checkFields}" :hidden="!checkFields">Modifier</a>
-                <button @click="deleteComment()" class="main__nav--button" :class="{'main__nav--button--disabled' : !checkFields}" :hidden="!checkFields">Supprimer</button>
+                <a :href="'#/editcomment/' + comment.id" class="main__nav--button" :hidden="!checkFields">Modifier</a>
+                <button @click="deleteComment()" class="main__nav--button" :hidden="!checkFields">Supprimer</button>
             </div>
             <div class="information">
                 <p class="information--p">Commentaire Modifié par {{ comment.modifiedBy }} </p>
@@ -90,20 +90,7 @@ export default {
     color: #000080;
     font-weight: lighter;
 }
-.main__nav--button--disabled {
-    padding: 0.2rem 0.2rem;
-    margin: 0.2rem 0.2rem 0rem 0.2rem;
-    background-color: #f2f2f2;
-    color: #dc143c;
-    font-weight: lighter;
-}
 .main__nav--button:hover {
-    padding: 0.2rem 0.2rem;
-    margin: 0.2rem 0.2rem 0rem 0.2rem;
-    font-weight: lighter;
-}
-.main__nav--button--disabled:hover {
-    cursor: not-allowed;
     padding: 0.2rem 0.2rem;
     margin: 0.2rem 0.2rem 0rem 0.2rem;
     font-weight: lighter;

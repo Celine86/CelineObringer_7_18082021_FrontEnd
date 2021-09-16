@@ -50,9 +50,7 @@ main {
     padding: 0.5rem;
 }
 .card__avatar {
-    width: 100%;
     max-width: 10rem;
-    height: auto;
     margin: 0 2rem;
 }
 </style>
