@@ -20,7 +20,6 @@
 </template>
 
 <script>
-// import axios from "axios"
 import api from "../services/api";
 import router from "../router"
 export default {
@@ -73,7 +72,7 @@ export default {
             if (userID === authorID || userRole === "true") {
                 this.message = "Vous pouvez modifer le post si vous le souhaitez"
             } else {
-                router.push("/");
+                router.push("/posts");
             }
         })
         .catch((error) => {

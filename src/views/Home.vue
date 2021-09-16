@@ -6,7 +6,7 @@
             </div>
             <div class="card__child">
                 <h1>Bienvenue !</h1>
-                <p>Avant de vous inscrire nous vous invitons à consulter la charte d'utilisation.<br>
+                <p>Avant de vous inscrire nous vous invitons à consulter la <a class="link--red" :href="'#/charte'">charte d'utilisation</a>.<br>
                 En vous inscrivant vous reconnaissez l'avoir lu et acceptée.<br>
                 N'hésitez pas à contacter le Service Communication pour toute question.<br>
                 Nous vous répondrons avec plaisir !</p>
@@ -29,7 +29,7 @@
 h1 {
     line-height: 4rem;
 }
-a {
+.card__child--nav a {
     font-weight: bold;
     font-size: 1.2rem;
 }

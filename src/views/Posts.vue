@@ -24,7 +24,7 @@
                         <p class="important--blue">Post commenté <span class="important--red">{{ post.Comments.length }}</span> fois</p>
                     </div>
                     <div class="information">
-                        <p class="information--p">Post Modifié par {{ post.modifiedBy }} </p>
+                        <p class="information--p"> {{ post.modifiedBy }} </p>
                     </div>
                 </div>
             </a>
@@ -38,7 +38,6 @@
 
 
 <script>
-// import axios from "axios"
 import api from "../services/api";
 
 export default {
@@ -47,7 +46,6 @@ export default {
         return {
             posts: [],
             error: "",
-            modifiedBy: "",
         }
     },
     methods: {

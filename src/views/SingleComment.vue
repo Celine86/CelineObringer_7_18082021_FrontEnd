@@ -13,7 +13,7 @@
                 <button @click="deleteComment()" class="main__nav--button" :hidden="!checkFields">Supprimer</button>
             </div>
             <div class="information">
-                <p class="information--p">Commentaire Modifié par {{ comment.modifiedBy }} </p>
+                <p class="information--p"> {{ comment.modifiedBy }} </p>
             </div>
         </div>
         <div class="message" v-if="message != ''"> {{ message }} </div>
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-// import axios from "axios"
 import api from "../services/api";
 import router from '../router';
 export default {

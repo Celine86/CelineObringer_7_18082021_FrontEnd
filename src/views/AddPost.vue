@@ -19,7 +19,6 @@
 </template>
 
 <script>
-// import axios from "axios"
 import api from "../services/api";
 import router from '../router';
 export default {

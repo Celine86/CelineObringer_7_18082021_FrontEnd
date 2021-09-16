@@ -24,7 +24,6 @@
 </template>
 
 <script>
-// import axios from "axios"
 import api from "../services/api";
 import router from '../router';
 export default {
@@ -75,7 +74,6 @@ export default {
                 })
             } else {
                 this.message = "Merci de cocher la case si vous souhaitez réellement supprimer votre compte"
-                //location.reload();
             }
         },
     },

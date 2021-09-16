@@ -16,7 +16,7 @@
                <button class="main__nav--button" @click="deletePost()" :hidden="!checkFields">Supprimer</button>
             </div>
                 <div class="information">
-                    <p class="information--p">Post Modifié par {{ post.modifiedBy }} </p>
+                    <p class="information--p"> {{ post.modifiedBy }} </p>
                 </div>
             <div v-for="comment in comments" :key="comment.id" class="card__child">
                 <a :href="'#/singlecomment/' + comment.id" >
@@ -28,7 +28,7 @@
                         <p>{{ comment.comment }}</p>
                     </div> 
                     <div class="information">
-                        <p class="information--p">Commentaire Modifié par {{ comment.modifiedBy }} </p>
+                        <p class="information--p"> {{ comment.modifiedBy }} </p>
                     </div>
                 </a> 
             </div>
@@ -40,7 +40,6 @@
 
 
 <script>
-// import axios from "axios"
 import api from "../services/api";
 import router from '../router';
 export default {

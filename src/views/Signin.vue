@@ -19,7 +19,6 @@
 </template>
 
 <script>
-//import axios from 'axios';
 import api from "../services/api";
 import router from '../router';
 export default {
@@ -48,7 +47,7 @@ export default {
                 localStorage.setItem("token",response.data.token)
                 localStorage.setItem("userId",response.data.userId)
                 localStorage.setItem("role",response.data.role)
-                //this.message = response.data.message                 
+                this.message = response.data.message                 
                 router.push("/posts");
             })
             .catch((error) => {

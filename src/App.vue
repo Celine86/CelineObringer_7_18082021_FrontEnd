@@ -42,9 +42,30 @@ body {
 h1,h2,h3,h4,h5,h6{
   color: #000080;
 }
-p{
+p {
   color: #000080;
 }
+a {
+  text-decoration: none;
+}
+.link--red {
+  color: #dc143c;
+}
+.nav {
+    margin: 1rem;
+    color: #000080;
+}
+.nav a {
+    text-transform: uppercase;
+    color: #000080;
+    font-weight: bold;
+}
+.nav a:hover {
+    text-transform: uppercase;
+    color: #dc143c;
+    font-weight: bold;
+}
+/* Main Content  */
 main {
   margin: auto;
   display: flex;
@@ -79,6 +100,7 @@ main {
   font-weight: bold;
   font-size: 1rem;
 }
+/* Card */
 .card {
   border: 0.2rem solid #dc143c;
   background: #f2f2f2;
@@ -141,19 +163,34 @@ main {
   align-items: center;
   padding-bottom: 1rem;
 }
-a {
-  text-decoration: none;
-}
-.card__postimage {
-  width: 100%;
-  height: auto;
-}
 .card__avatarimage {
   width: 100%;
   max-width: 35px;
   height: auto;
   margin: 0 1rem;
 }
+.card__postimage {
+  width: 100%;
+  height: auto;
+}
+.card__post--file {
+    background-color: #f2f2f2;
+    color: #000080;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.card__child--logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 20rem;
+    height: auto;
+}
+.card__avatar {
+    width: 100%;
+    height: auto;
+}
+/* Message and Alert */
 .alert {
   border: 0.2rem solid #000080;
   background-color: #dc143c;
@@ -170,12 +207,13 @@ a {
   margin: 1rem;
   max-width: 20rem;
 }
+/* Information */
 .information {
   margin-top: 2rem;
 }
 .information--p {
   font-size: 0.75rem;
-
+  color: #dc143c;
 }
 .important--red {
   color: #dc143c;
@@ -185,45 +223,16 @@ a {
   font-weight: bold;
   color: #000080;
 }
-.nav {
-    margin: 1rem;
-    color: #000080;
-}
-.nav a{
-    text-transform: uppercase;
-    color: #000080;
-    font-weight: bold;
-}
-.nav a:hover{
-    text-transform: uppercase;
-    color: #dc143c;
-    font-weight: bold;
-}
+/* FORM */
 textarea {
     resize: none;
 }
-.card__post--file {
-    background-color: #f2f2f2;
-    color: #000080;
-    font-weight: bold;
-    font-size: 1rem;
-}
-.card__child--logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 20rem;
-    height: auto;
-}
+/* Wrap for Cards */
 .wrap {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-}
-.card__avatar {
-    width: 100%;
-    height: auto;
 }
 </style>
