@@ -18,8 +18,9 @@
 </template>
 
 <script>
+// import axios from "axios"
+import api from "../services/api";
 import router from '../router';
-import axios from "axios"
 export default {
     name: "SingleUser",
     data() {
@@ -43,7 +44,7 @@ export default {
         deleteAccount() {
             if (document.getElementById('delete').checked) {
                 let id = this.$route.params.id;
-                axios.delete(`http://127.0.0.1:3000/api/users/profils/${id}`, { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
+                api.delete(`/api/users/profils/${id}`, { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
                 .then((response) => {
                     this.message = response.data.message
                     router.push("/");
@@ -59,7 +60,7 @@ export default {
     },
     created() {
         let id = this.$route.params.id;
-        axios.get(`http://localhost:3000/api/users/profils/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
+        api.get(`/api/users/profils/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
         .then(response => {
             this.user = response.data.userInfos
             this.userRole = localStorage.getItem("role")

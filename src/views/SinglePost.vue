@@ -40,8 +40,9 @@
 
 
 <script>
+// import axios from "axios"
+import api from "../services/api";
 import router from '../router';
-import axios from "axios"
 export default {
     name: "SinglePost",
     data() {
@@ -68,7 +69,7 @@ export default {
     methods: {
         deletePost() {
             let id = this.$route.params.id;
-            axios.delete(`http://localhost:3000/api/posts/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
+            api.delete(`/api/posts/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
             .then((response) => {
                 this.message = response.data.message
                 router.push("/posts")
@@ -80,7 +81,7 @@ export default {
     },
     created: function() {
         let id = this.$route.params.id;
-        axios.get(`http://localhost:3000/api/posts/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
+        api.get(`/api/posts/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
         .then(response => {
             this.post = response.data
             this.user = response.data.User

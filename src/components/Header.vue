@@ -1,9 +1,9 @@
 <template>
     <header>
-        <img alt="Groupomania logo" src="@/assets/logoblack.png" />
+        <a :href="'/'" ><img alt="Groupomania logo" src="@/assets/logoblack.png" /></a>
         <div class="nav">
-            <router-link to="/">Accueil</router-link> || 
             <router-link to="/posts">Posts</router-link> || 
+            <router-link to="/users">Annuaire</router-link> || 
             <router-link to="/useraccount">Profil</router-link> 
         </div>
         <div>

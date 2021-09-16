@@ -37,7 +37,8 @@
 
 
 <script>
-import axios from "axios"
+// import axios from "axios"
+import api from "../services/api";
 
 export default {
     name: "Posts",
@@ -54,7 +55,7 @@ export default {
         }
     }, 
     created() {
-        axios.get("http://localhost:3000/api/posts/", { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
+        api.get(`/api/posts/`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
         .then(response => {
             this.posts = response.data
         })

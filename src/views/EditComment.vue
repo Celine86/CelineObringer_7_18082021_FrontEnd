@@ -15,7 +15,8 @@
 </template>
 
 <script>
-import axios from "axios"
+// import axios from "axios"
+import api from "../services/api";
 import router from "../router"
 export default {
     name: "EditPost",
@@ -29,7 +30,7 @@ export default {
     methods: {
         modifyComment() {
             let id = this.$route.params.id;
-            axios.put(`http://localhost:3000/api/posts/comment/${id}`, {"comment": this.editComment }, { headers: { "Authorization":"Bearer " + localStorage.getItem("token")}})
+            api.put(`/api/posts/comment/${id}`, {"comment": this.editComment }, { headers: { "Authorization":"Bearer " + localStorage.getItem("token")}})
             .then((response) => {
                 if (response.status === 200) {
                     this.message = response.data.message
@@ -43,7 +44,7 @@ export default {
     },
     created() {
         let id = this.$route.params.id;
-        axios.get(`http://localhost:3000/api/posts/comment/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
+        api.get(`/api/posts/comment/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
         .then(response => {
             console.log(response)
             console.log(response.data.User.id)

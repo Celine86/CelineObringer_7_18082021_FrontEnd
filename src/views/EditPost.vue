@@ -20,7 +20,8 @@
 </template>
 
 <script>
-import axios from "axios"
+// import axios from "axios"
+import api from "../services/api";
 import router from "../router"
 export default {
     name: "EditPost",
@@ -47,7 +48,7 @@ export default {
             formData.set("title", this.editTitle.toString())
             formData.set("content", this.editContent.toString())
             let id = this.$route.params.id;
-            axios.put(`http://localhost:3000/api/posts/${id}`, formData, { headers: { "Authorization":"Bearer " + localStorage.getItem("token")}})
+            api.put(`/api/posts/${id}`, formData, { headers: { "Authorization":"Bearer " + localStorage.getItem("token")}})
             .then((response) => {
                 if (response.status === 200) {
                     this.message = response.data.message
@@ -61,7 +62,7 @@ export default {
     },
     created() {
         let id = this.$route.params.id;
-        axios.get(`http://localhost:3000/api/posts/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
+        api.get(`/api/posts/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
         .then(response => {
             this.editTitle = response.data.title
             this.editContent = response.data.content

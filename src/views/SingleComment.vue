@@ -22,8 +22,9 @@
 </template>
 
 <script>
+// import axios from "axios"
+import api from "../services/api";
 import router from '../router';
-import axios from "axios"
 export default {
     name: "SingleComment",
     data() {
@@ -49,7 +50,7 @@ export default {
     methods: {
         deleteComment() {
             let id = this.$route.params.id;
-            axios.delete(`http://localhost:3000/api/posts/comment/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
+            api.delete(`/api/posts/comment/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
             .then((response) => {
                 this.message = response.data.message
                 router.push("/posts")
@@ -61,7 +62,7 @@ export default {
     },
     created() {
         let id = this.$route.params.id;
-        axios.get(`http://localhost:3000/api/posts/comment/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
+        api.get(`/api/posts/comment/${id}`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
         .then(response => {
             this.comment = response.data
             this.user = response.data.User

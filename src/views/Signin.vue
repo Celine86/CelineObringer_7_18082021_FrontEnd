@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+//import axios from 'axios';
+import api from "../services/api";
 import router from '../router';
 export default {
     name: "Signin",
@@ -42,7 +43,7 @@ export default {
     },
     methods: {
         submit() {
-            axios.post('http://localhost:3000/api/users/login', { username: this.myUsername, password: this.myPassword})
+            api.post(`/api/users/login`, { username: this.myUsername, password: this.myPassword})
             .then((response) => {
                 localStorage.setItem("token",response.data.token)
                 localStorage.setItem("userId",response.data.userId)

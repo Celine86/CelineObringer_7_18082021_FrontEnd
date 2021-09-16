@@ -24,8 +24,9 @@
 </template>
 
 <script>
+// import axios from "axios"
+import api from "../services/api";
 import router from '../router';
-import axios from 'axios';
 export default {
     name: "Signup",
     data: function () {
@@ -56,7 +57,7 @@ export default {
     },
     methods: {
         submit() {
-            axios.post('http://127.0.0.1:3000/api/users/signup', { email: this.myEmail, username: this.myUsername, password: this.myPassword })
+            api.post(`/api/users/signup`, { email: this.myEmail, username: this.myUsername, password: this.myPassword })
             .then((response) => {
                 if (response.status === 201) {
                     this.message = response.data.message
@@ -68,7 +69,7 @@ export default {
             })
         },
         signin() {
-            axios.post('http://localhost:3000/api/users/login', { username: this.myUsername, password: this.myPassword})
+            api.post(`/api/users/login`, { username: this.myUsername, password: this.myPassword})
             .then((response) => {
                 localStorage.setItem("token",response.data.token)
                 localStorage.setItem("userId",response.data.userId)

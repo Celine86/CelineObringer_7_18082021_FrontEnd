@@ -24,8 +24,9 @@
 </template>
 
 <script>
+// import axios from "axios"
+import api from "../services/api";
 import router from '../router';
-import axios from 'axios';
 export default {
     name: "UserAccount",
     data() {
@@ -52,7 +53,7 @@ export default {
         updateAvatar() {
             const formData = new FormData();
             formData.append("image", this.file);
-            axios.put("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), formData, { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
+            api.put(`/api/users/profils/` + localStorage.getItem("userId"), formData, { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
             .then((response) => {
                 this.message = response.data.message
                 location.reload();
@@ -63,7 +64,7 @@ export default {
         },
         deleteAccount() {
             if (document.getElementById('delete').checked) {
-                axios.delete("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"), { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
+                api.delete(`/api/users/profils/` + localStorage.getItem("userId"), { headers:{ "Authorization": "Bearer " + localStorage.getItem("token")} })
                 .then((response) => {
                     this.message = response.data.message
                     localStorage.clear()
@@ -79,7 +80,7 @@ export default {
         },
     },
     created() {
-        axios.get("http://127.0.0.1:3000/api/users/profils/" + localStorage.getItem("userId"),{ headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
+        api.get(`/api/users/profils/` + localStorage.getItem("userId"),{ headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
         .then(user => {
             this.username = user.data.userInfos.username;
             this.email = user.data.userInfos.email;

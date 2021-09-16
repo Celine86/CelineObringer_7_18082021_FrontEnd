@@ -7,27 +7,25 @@
                 <h3>{{ user.email }}</h3>
             </a>
         </div>
-        <div class="message" v-if="message != ''"> {{ message }} </div>
         <div class="alert" v-if="error != ''"> {{ error }} </div>
     </main>
 </template>
 
 <script>
-import axios from "axios"
+// import axios from "axios"
+import api from "../services/api";
 export default {
     name: "Users",
     data() {
         return {
             users: [],
             error: "",
-            message: "",
         }
     },
     created() {
-        axios.get("http://localhost:3000/api/users/profils", { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
+        api.get(`/api/users/profils`, { headers: {"Authorization": "Bearer " + localStorage.getItem("token")} })
         .then(response => {
             this.users = response.data
-            this.message = response.data.message
         })
         .catch((error) => {
             this.error = error.response.data.error

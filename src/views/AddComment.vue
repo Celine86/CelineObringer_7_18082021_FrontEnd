@@ -13,8 +13,9 @@
 </template>
 
 <script>
+// import axios from "axios"
+import api from "../services/api";
 import router from '../router';
-import axios from "axios"
 export default {
     name: "AddComment",
     data() {
@@ -37,7 +38,7 @@ export default {
     methods: {
         addComment() {
             let id = this.$route.params.id;
-            axios.post(`http://localhost:3000/api/posts/${id}/comment`, { "UserId": this.currentUserId, "comment": this.comment }, { headers: { "Authorization":"Bearer " + localStorage.getItem("token")}})
+            api.post(`/api/posts/${id}/comment`, { "UserId": this.currentUserId, "comment": this.comment }, { headers: { "Authorization":"Bearer " + localStorage.getItem("token")}})
             .then((response) => {
                 this.comment = ""
                 this.UserId = ""

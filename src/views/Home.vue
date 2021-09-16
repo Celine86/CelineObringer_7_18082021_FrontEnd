@@ -7,8 +7,8 @@
             <div class="card__child">
                 <h1>Bienvenue !</h1>
                 <p>Avant de vous inscrire nous vous invitons à consulter la charte d'utilisation.<br>
-                En vous inscrivant vous reconnaissez l'avoir lu et acceptée !<br>
-                N'hésitez pas à envoyer un e-mail à contecter le Service Communication pour toute question.<br>
+                En vous inscrivant vous reconnaissez l'avoir lu et acceptée.<br>
+                N'hésitez pas à contacter le Service Communication pour toute question.<br>
                 Nous vous répondrons avec plaisir !</p>
             </div>
             <div class="card__child--nav--home">

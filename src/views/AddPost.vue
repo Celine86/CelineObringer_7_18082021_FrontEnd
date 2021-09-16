@@ -19,8 +19,9 @@
 </template>
 
 <script>
+// import axios from "axios"
+import api from "../services/api";
 import router from '../router';
-import axios from "axios"
 export default {
     name: "AddPost",
     data() {
@@ -53,7 +54,7 @@ export default {
             formData.set("title", this.title.toString())
             formData.set("content", this.content.toString())
             formData.set("UserId", this.currentUserId.toString())
-            axios.post("http://localhost:3000/api/posts/create/", formData, { headers: { "Authorization":"Bearer " + localStorage.getItem("token")}})
+            api.post(`/api/posts/create/`, formData, { headers: { "Authorization":"Bearer " + localStorage.getItem("token")}})
             .then((response) => {
                 this.file = null
                 this.title = ""
