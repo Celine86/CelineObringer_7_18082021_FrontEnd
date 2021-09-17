@@ -12,10 +12,10 @@ Le stack utilisé est le suivant :
 - Lancer ensuite les commandes ci-dessous :  
 ``` npm install ```  
 ``` npm run serve ```  
-- Le site sera accessible sur [http:\\localhost:8080](http:\\localhost:8080)  
+- Le site sera accessible sur [localhost:8080](http:\\localhost:8080)  
   
 **Versions utilisées pour ce projet :**  
-@vue/cli : 4.5.13
+@vue/cli : 4.5.13  
 Npm : 6.14.14  
   
 **Repository du BackEnd:**  
