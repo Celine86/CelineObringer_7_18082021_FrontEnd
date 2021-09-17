@@ -1,5 +1,6 @@
 <template>
     <main>  
+        <h1 class="title">Modifier un Post</h1>
         <form @submit.prevent enctype="multipart/form-data" class="card">
             <div class="card__child">
                 <label for="editTitle" class="card__input">Titre </label>

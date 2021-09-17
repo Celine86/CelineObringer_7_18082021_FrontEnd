@@ -1,5 +1,6 @@
 <template>
     <main>
+        <h1 class="title">Ajouter un Commentaire</h1>
         <div class="card">
             <div class="card__child">
                 <label for="comment" class="card__input">Message </label>

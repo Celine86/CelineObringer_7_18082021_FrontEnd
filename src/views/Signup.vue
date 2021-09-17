@@ -1,5 +1,6 @@
 <template>
     <main>
+        <h1 class="title">Se connecter</h1>
         <form @submit.prevent class="card">
             <div class="card__child">
                 <label for="myEmail" class="card__input" :hidden="checkFields2">Email </label>

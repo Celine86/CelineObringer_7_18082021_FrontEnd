@@ -1,9 +1,9 @@
 <template>
     <main>
         <div class="card">
-            <h2>{{ user.username }}</h2>
+            <h1>{{ user.username }}</h1>
                 <img :src="user.avatar" class="card__avatar"><br>                    
-            <h3>{{ user.email }}</h3>
+            <h2>{{ user.email }}</h2>
             <div class="card__admin">
                 <button @click="deleteAccount()" class="card__btn" :hidden="!checkFields">Supprimer le Compte</button>
                 <div>

@@ -105,7 +105,7 @@ export default {
 }
 .card__btn {
     border: 0.15rem solid #dc143c;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     color: #000080;
 }
 .card__avatar--file {
@@ -113,7 +113,7 @@ export default {
     padding: 0.2rem 0.4rem;
     margin: 0.2rem 0.4rem;
     cursor: pointer;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     color: #000080;
     font-weight: bold;
     font-size: 1rem;

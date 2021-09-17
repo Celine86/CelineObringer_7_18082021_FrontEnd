@@ -42,4 +42,11 @@ header {
 .nav a:hover{
     font-size: 1.2rem;
 }
+.card__btn {
+  background-color: rgba(255, 255, 255, 0);
+  color: #000080; 
+}
+.card__btn:hover {
+  color: #dc143c; 
+}
 </style>

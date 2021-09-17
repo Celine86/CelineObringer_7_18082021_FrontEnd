@@ -1,5 +1,6 @@
 <template>
     <main>  
+        <h1 class="title">Les Posts !</h1>
         <div class="card">
             <div class="card__author">
                 <img :src="user.avatar" class="card__avatarimage">
@@ -105,7 +106,7 @@ export default {
     border: 0.1rem solid #000080;
     padding: 0.2rem 0.2rem;
     margin: 1.5rem 0.2rem 0rem 0.2rem;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     color: #000080;
     font-weight: lighter;
 }

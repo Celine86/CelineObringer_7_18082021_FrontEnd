@@ -1,11 +1,14 @@
 <template>
     <main>
-        <div v-for="user in users" :key="user.id" class="card">
-            <a :href="'#/singleuser/' + user.id" >
-                <h2>{{ user.username }}</h2>
-                <img :src="user.avatar" class="card__avatar"><br>                    
-                <h3>{{ user.email }}</h3>
-            </a>
+        <h1 class="title">Annuaire</h1>
+        <div class ="wrap--row">
+            <div v-for="user in users" :key="user.id" class="card">
+                <a :href="'#/singleuser/' + user.id" >
+                    <h2>{{ user.username }}</h2>
+                    <img :src="user.avatar" class="card__avatar"><br>                    
+                    <h3>{{ user.email }}</h3>
+                </a>
+            </div>
         </div>
         <div class="alert" v-if="error != ''"> {{ error }} </div>
     </main>
@@ -34,10 +37,6 @@ export default {
 </script>
 
 <style scoped>
-main {
-    flex-direction: row;
-    flex-wrap: wrap;
-}
 .card {
     display: flex;
     flex-wrap: wrap;

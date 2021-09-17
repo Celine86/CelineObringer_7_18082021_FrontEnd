@@ -42,6 +42,9 @@ body {
 h1,h2,h3,h4,h5,h6{
   color: #000080;
 }
+.title {
+  padding-bottom: 2rem;
+}
 p {
   color: #000080;
 }
@@ -86,7 +89,7 @@ main {
   margin: 0.2rem 0.2rem 1rem 0.2rem;
   cursor: pointer;
   background-color: #000080;
-  color: #f2f2f2;
+  color: #ffffff;
   font-weight: bold;
   font-size: 1rem;
 }
@@ -96,14 +99,14 @@ main {
   margin: 0.2rem 0.2rem 1rem 0.2rem;
   cursor: pointer;
   background-color: #dc143c;
-  color: #f2f2f2;
+  color: #ffffff;
   font-weight: bold;
   font-size: 1rem;
 }
 /* Card */
 .card {
   border: 0.2rem solid #dc143c;
-  background: #f2f2f2;
+  background: #ffffff;
   padding: 2rem;
   margin: 0rem;
   max-width: 50rem;
@@ -138,17 +141,17 @@ main {
   margin: 0.2rem 0.4rem;
   cursor: pointer;
   background-color: #000080;
-  color: #f2f2f2;
+  color: #ffffff;
   font-weight: bold;
   font-size: 1rem;
 }
 .card__btn--disabled {
   background: #dc143c;
-  color: #f2f2f2;
+  color: #ffffff;
 }
 .card__btn--disabled:hover {
   cursor: not-allowed;
-  background: #f2f2f2;
+  background: #ffffff;
   color: #dc143c;
 }
 .card__input {
@@ -174,7 +177,7 @@ main {
   height: auto;
 }
 .card__post--file {
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     color: #000080;
     font-weight: bold;
     font-size: 1rem;
@@ -194,7 +197,7 @@ main {
 .alert {
   border: 0.2rem solid #000080;
   background-color: #dc143c;
-  color: #f2f2f2;
+  color: #ffffff;
   padding: 0.5rem;
   margin: 1rem;
   max-width: 20rem;
@@ -202,7 +205,7 @@ main {
 .message {
   border: 0.2rem solid #dc143c;
   background-color: #000080;
-  color: #f2f2f2;
+  color: #ffffff;
   padding: 0.5rem;
   margin: 1rem;
   max-width: 20rem;
@@ -227,10 +230,17 @@ main {
 textarea {
     resize: none;
 }
-/* Wrap for Cards */
-.wrap {
+/* Wrap */
+.wrap--column {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.wrap--row {
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
