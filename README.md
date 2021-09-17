@@ -4,7 +4,7 @@
 L'objectif de ce projet est de réaliser le back-end et le front-end d'un réseau social d'entreprise.  
   
 Concernant le Front-End:  
-Le stack utilisé est le suivant :  
+La stack utilisé est le suivant :  
 - @vue/cli   
   
 **Installer le frontend :**  
