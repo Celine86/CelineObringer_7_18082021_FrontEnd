@@ -1,6 +1,6 @@
 <template>
     <main>
-        <h1 class="title">Crééer un compte</h1>
+        <h1 class="title">Se connecter</h1>
         <form @submit.prevent class="card">
             <div class="card__child">
                 <label for="myUsername" class="card__input">Pseudonyme </label>

@@ -16,6 +16,9 @@
                 <li>Merci de rester poli et courtois dans vos échanges. Vous pouvez vous taquiner entre vous mais soyez certain que vos taqueneries seront bien perçues par votre interlocuteur.</li>
                 <li>Merci de ne pas spoiler les fins de films, jeux, séries, etc. durant les 6 mois suivant leur sortie.</li>
             </ol>
+            <div class="card__child--nav">
+                <router-link class="card__btn" to="/signup">Inscription</router-link>
+            </div>
         </div>
     </header>
 </template>
@@ -38,5 +41,11 @@ ol li {
 }
 a {
     color: #dc143c;
+}
+.card__btn {
+    color: #ffffff;
+}
+.card__btn:hover {
+    color: #ffffff;
 }
 </style>
