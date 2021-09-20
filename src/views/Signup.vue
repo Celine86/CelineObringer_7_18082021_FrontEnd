@@ -74,12 +74,18 @@ export default {
                 localStorage.setItem("token",response.data.token)
                 localStorage.setItem("userId",response.data.userId)
                 localStorage.setItem("role",response.data.role)
-                this.message = response.data.message                 
-                router.push("/posts");
+                this.message = response.data.message
+                location.reload();                 
+                //router.push("/posts");
             })
             .catch((error) => {
                 this.error = error.response.data.error
             })
+        }
+    },
+    created() {
+        if (localStorage.getItem("userId") != null) { 
+            router.push("/posts");
         }
     }
 }
