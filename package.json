@@ -9,7 +9,9 @@
     "lint": "vue-cli-service lint",
     "preinstall": "npx npm-force-resolutions"
   },
-  "resolutions": { "glob-parent": "^6.0.1" },
+  "resolutions": {
+    "glob-parent": "^6.0.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Celine86/CelineObringer_7_18082021_FrontEnd.git"
